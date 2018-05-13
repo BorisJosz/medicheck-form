@@ -4,21 +4,23 @@
   width: 100vw;
   background-color: #EBF8FA;
   display: flex;
+  position: relative;
 }
 
 
-/*FORM*/
+/*FORM BACKGROUND*/
 .form-background {
-  height: 80vh;
+  height: 90vh;
+  min-width: 600px;
   background-color: #EA2143;
   flex-basis: 40%;
   position: sticky;
   left: 10vw;
-  top: 10vh;
+  top: 5vh;
   position: relative;
 }
 
-.formtext {
+.formText {
   color: white;
   font-family: 'Roboto', sans-serif;
 }
@@ -32,21 +34,20 @@
 }
 
 .next {
-  font-size: 24px;
+  font-size: 18px;
   color: white;
   position: absolute;
-  right: 40px;
+  right: 30px;
   bottom: 20px;
 }
 
 .previous {
-  font-size: 24px;
+  font-size: 18px;
   color: white;
   position: absolute;
-  right: 140px;
+  right: 90px;
   bottom: 20px;
 }
-
 
 /*IMAGE*/
 .image-container {
