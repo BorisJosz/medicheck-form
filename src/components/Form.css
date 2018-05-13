@@ -1,0 +1,64 @@
+/*PAGE*/
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #EBF8FA;
+  display: flex;
+}
+
+
+/*FORM*/
+.form-background {
+  height: 80vh;
+  background-color: #EA2143;
+  flex-basis: 40%;
+  position: sticky;
+  left: 10vw;
+  top: 10vh;
+  position: relative;
+}
+
+.formtext {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  left: 75px;
+  top: 50px;
+}
+
+.next {
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+}
+
+.previous {
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  right: 140px;
+  bottom: 20px;
+}
+
+
+/*IMAGE*/
+.image-container {
+  flex-grow: 1;
+  position: right;
+  height: 100vh;
+  background-color: #EBF8FA;
+  display: flex;
+}
+
+.background-image {
+  height: 100vh;
+  position: sticky;
+  left: 60vw;
+}
