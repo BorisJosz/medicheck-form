@@ -22,6 +22,6 @@ const form =
     <div className="formText previous"> Previous </div>
   </div>
   <div className="image-container">
-    <img src={'http://res.cloudinary.com/borisj/image/upload/v1526232024/Medicheck/MedicheckFormBackground.png'} className="background-image"/>
+    <img alt="Website background" src={'http://res.cloudinary.com/borisj/image/upload/v1526232024/Medicheck/MedicheckFormBackground.png'} className="background-image"/>
   </div>
 </div>
