@@ -51,7 +51,8 @@
 .background-image {
   height: 100vh;
   position: sticky;
-  left: 60vw;
+  position: absolute;
+  right: 10vw;
 }
 
 
@@ -80,7 +81,7 @@ body {
   background: white;
   border: 0 none;
   border-radius: 3px;
-  box-shadow: -3px 3px 10px 2px #333;
+  box-shadow: -5px 5px 15px #333;
   padding: 20px 30px;
 
   box-sizing: border-box;
