@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from '.App.js'
-import FormSlide from './containers/FormSlide'
+import App from './App.js'
+import Form from './containers/Form.js'
 // import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<FormSlide />, document.getElementById('root'));
+ReactDOM.render(<Form />, document.getElementById('root'));
 // registerServiceWorker();
