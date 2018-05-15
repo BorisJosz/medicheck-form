@@ -11,10 +11,9 @@
 
 /*FORM BACKGROUND*/
 .form-background {
-  min-height: 90vh;
-  min-width: 600px;
+  height: 90vh;
+  width: 600px;
   background-color: #EA2143;
-  flex-grow: 1;
   position: sticky;
   position: relative;
   top: 5vh;
@@ -111,7 +110,7 @@ body {
 
 /*buttons*/
 #msform .action-button {
-  background: #E62B4C;
+  background-color: rgba(255,0,0,0);
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -120,23 +119,22 @@ body {
   padding: 10px 5px;
   margin: 10px 5px;
   position: absolute;
+  top: 80vh;
 }
 
 #msform .next {
-  top: 66vh;
   right: 5vw;
 }
 
 #msform .prev {
-  top: 66vh;
   right: 10vw;
 }
 
 #msform .submit {
-  top: 66vh;
-  right: 0vw;
+  right: 5vw;
   width: 70px;
   height: 35px;
+  text-align: right;
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
