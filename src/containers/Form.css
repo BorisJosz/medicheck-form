@@ -111,7 +111,6 @@ body {
 
 /*buttons*/
 #msform .action-button {
-
   background: #E62B4C;
   font-weight: bold;
   color: white;
@@ -135,9 +134,8 @@ body {
 
 #msform .submit {
   top: 66vh;
-  right: 4vw;
-  background-color: none;
-  width: 80px;
+  right: 0vw;
+  width: 70px;
   height: 35px;
 }
 
