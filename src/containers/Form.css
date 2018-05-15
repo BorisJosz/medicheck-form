@@ -5,7 +5,6 @@
   width: 100vw;
   background-color: #EBF8FA;
   position: relative;
-  z-index: -1;
 }
 
 /*FORM BACKGROUND*/
@@ -14,7 +13,8 @@
   width: 600px;
   background-color: #EA2143;
   position: absolute;
-  left: 10vh;
+  left: 5vw;
+  top: 5vh;
   z-index: 1;
   display: grid;
   grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
@@ -22,7 +22,7 @@
 }
 
 .formBody {
-  z-index: 3;
+  z-index: 1;
 }
 
 .formText {
@@ -40,9 +40,7 @@
 
 /*IMAGE*/
 .image-container {
-  position: right;
-  height: 100vh;
-  background-color: #EBF8FA;
+
 }
 
 .background-image {
@@ -110,12 +108,12 @@ body {
   color: white;
   cursor: pointer;
   border: none;
-  margin-bottom: 40px;
+  margin-top: 30px;
 }
 
 .next {
   grid-column: 11 / span 2;
-  grid-row: 18;
+  grid-row: 17;
 }
 
 .prev {
@@ -128,6 +126,7 @@ body {
 
 .action-button:hover, .action-button:focus {
   font-size: 18px;
+  border: none;
 }
 
 /*headings*/
@@ -140,21 +139,20 @@ body {
 
 /*progressbar*/
 #progressbar {
-  margin-bottom: 30px;
   width: 250px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   /*CSS counters to number the steps*/
   counter-reset: step;
-  grid-column: 4 / span 4;
+  grid-column: 5 / span 4;
   grid-row: 17;
-
+  margin-top: 30px;
 }
 
 #progressbar li {
   list-style-type: none;
   width: 10%;
   float: left;
-  /*position: relative;*/
+  z-index: 2;
 
 }
 
