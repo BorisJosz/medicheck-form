@@ -1,7 +1,14 @@
 import React from "react";
 import './Form.css';
 import Stepper from '../components/Stepper.js';
-import Toggle from '../components/Toggle.js'
+import Toggle from '../components/Toggle.js';
+import DayPicker from 'react-day-picker';
+import Calendar from '../components/Calendar.js';
+
+// Or import the input component
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+
+import 'react-day-picker/lib/style.css';
 
 class Form extends React.Component {
   constructor(props){
@@ -89,7 +96,9 @@ class Form extends React.Component {
                 <fieldset class={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
-
+                    <div className="calendar">
+                      <Calendar />
+                    </div>
                   </div>
                 </fieldset>
               }
