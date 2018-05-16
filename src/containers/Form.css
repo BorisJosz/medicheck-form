@@ -99,15 +99,16 @@ fieldset .fs-title {
 
 /*inputs*/
 #msform input, #msform textarea {
-  padding: 5px;
+  /*single red bottom border*/
   border: 0px solid;
   border-bottom: 1px solid #E62B4C;
-  margin-bottom: 50px;
+
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   color: #2C3E50;
-  font-size: 13px;
+  font-size: 15px;
   width: 100%;
+  padding-bottom: 10px;
 }
 
 #contactPersonName {
@@ -122,22 +123,22 @@ fieldset .fs-title {
 
 #employeeFirstName {
   grid-column: 2 /span 3;
-  grid-row: 3;
+  grid-row: 6;
 }
 
 #employeeLastName {
-  grid-column: 6 /span 3;
-  grid-row: 3;
+  grid-column: 7 /span 3;
+  grid-row: 6;
 }
 
 #employeeEmail {
   grid-column: 2 /span 8;
-  grid-row: 5;
+  grid-row: 9;
 }
 
 #employeePhoneNumber {
   grid-column: 2 /span 8;
-  grid-row: 7;
+  grid-row: 12;
 }
 
 /*buttons*/

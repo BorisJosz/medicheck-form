@@ -1,0 +1,154 @@
+.languageQuestion {
+  grid-column: 2 /span 8;
+  grid-row: 16;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  color: #747574;
+  font-size: 14px;
+}
+
+.fr {
+  grid-column: 6
+}
+
+.nl {
+  grid-column: 9;
+}
+
+.toggleLanguage {
+  grid-column: 7;
+  grid-row: 16;
+}
+
+.toggle-1 {
+  grid-column: 2 /span 8;
+  grid-row: 8;
+}
+
+.toggle-2 {
+  grid-column: 2 /span 8;
+  grid-row: 14;
+}
+
+/*CHECK DETAILS Formatting*/
+.toggleTitles {
+  font-family: 'Roboto', sans-serif;
+  color: #747574;
+  font-size: 14px;
+}
+
+/*headers*/
+.optimizedCheck {
+  grid-column: 1 /span 4;
+  grid-row: 7;
+  text-align: right;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.immediateCheck {
+  grid-column: 7 /span 4;
+  grid-row: 7;
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.doctorsOffice {
+  grid-column: 1 /span 4;
+  grid-row: 13;
+  text-align: right;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.atHome {
+  grid-column: 7 /span 4;
+  grid-row: 13;
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.toggleDetailsText {
+  font-family: 'Roboto', sans-serif;
+  color: #747574;
+  font-size: 12px;
+}
+
+/*description text*/
+.optimized {
+  grid-column: 1 /span 4;
+  grid-row: 8;
+  text-align:justify;
+  direction: rtl;
+}
+
+.immediate {
+  grid-column: 7 /span 4;
+  grid-row: 8;
+  text-align: justify;
+
+}
+
+.doctor {
+  grid-column: 1 /span 4;
+  grid-row: 14;
+  text-align: justify;
+  direction: rtl;
+}
+
+.home {
+  grid-column: 7 /span 4;
+  grid-row: 14;
+  text-align: justify;
+}
+
+/*TOGGLE*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 19px;
+  outline: none;
+}
+.switch input {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #E62B4C;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 3px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #E62B4C;
+}
+/*input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}*/
+input:checked + .slider:before {
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
