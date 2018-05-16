@@ -7,19 +7,26 @@ class Form extends React.Component {
     super(props)
     this.state = {
       currentStep: 1,
-      numberOfStep: 5
+      numberOfStep: 5,
+      animationSide: "slideLeft"
     }
   }
 
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
+    this.setState({animationSide: "slideRight"})
   }
+
+  // I want my prevStep method to also change the class of my fieldset to slideRight
 
   nextStep = () => {
     this.setState({currentStep: this.state.currentStep + 1});
+    this.setState({animationSide: "slideLeft"})
   }
 
   render() {
+    const { currentStep } = this.state
+
     return (
       <div className="container">
         <div className="formBody">
@@ -28,35 +35,40 @@ class Form extends React.Component {
 
             <form id="msform">
               {/* fieldsets */}
-              {this.state.currentStep === 1 &&
-                <fieldset>
-                  <h2 className="fs-title"> Company Information </h2>
-                  <input type="text" name="contactPerson" placeholder="Contact person's name" />
-                  <input type="text" name="contactEmail" placeholder="Email address" />
+              {currentStep === 1 &&
+                <fieldset class={this.state.animationSide}>
+                  <div className="grid-display">
+                    <h2 className="fs-title"> Company Information </h2>
+                    <input type="text" id="contactPersonName" placeholder="Contact person's name" />
+                    <input type="text" id="contactEmail" placeholder="Email address" />
+                  </div>
                 </fieldset>
               }
-              {this.state.currentStep === 2 &&
-                <fieldset>
-                  <h2 className="fs-title"> Employee Information </h2>
-                  <input type="text" name="firstName" placeholder="First Name" />
-                  <input type="text" name="lastName" placeholder="Last Name" />
-                  <input type="text" name="employeeEmail" placeholder="Email address" />
+              {currentStep === 2 &&
+                <fieldset class={this.state.animationSide}>
+                  <div className="grid-display">
+                    <h2 className="fs-title"> Employee Information </h2>
+                    <input type="text" id="employeeFirstName" placeholder="First Name" />
+                    <input type="text" id="employeeLastName" placeholder="Last Name" />
+                    <input type="text" id="employeeEmail" placeholder="Email address" />
+                    <input type="text" id="employeePhoneNumber" placeholder="Phone number" />
+                  </div>
                 </fieldset>
               }
-              {this.state.currentStep === 3 &&
-                <fieldset>
+              {currentStep === 3 &&
+                <fieldset class={this.state.animationSide}>
                   <h2 className="fs-title"> Check Details </h2>
                 </fieldset>
               }
-              {this.state.currentStep === 4 &&
-              <fieldset>
+              {currentStep === 4 &&
+              <fieldset class={this.state.animationSide}>
                   <h2 className="fs-title"> Incapacity Period </h2>
                   <input type="text" name="startDate" placeholder="Start Date" />
                   <input type="text" name="endDate" placeholder="End Date" />
                 </fieldset>
               }
-              {this.state.currentStep === 5 &&
-                <fieldset>
+              {currentStep === 5 &&
+                <fieldset class={this.state.animationSide}>
                   <h2 className="fs-title"> Comments </h2>
                   <input type="text" name="doctorComment" placeholder="This comment will only be seen by the concerned doctor" />
                   <input type="text" name="medicheckComment" placeholder="This comment will only be seen by Medicheck" />
@@ -64,20 +76,20 @@ class Form extends React.Component {
               }
             </form>
 
-            {this.state.currentStep === 1 &&
+            {currentStep === 1 &&
               <div className="button-placement">
                 <button className="next action-button" onClick={this.nextStep}> Next </button>
               </div>
             }
 
-            {this.state.currentStep >= 2 && this.state.currentStep <= 4 &&
+            {currentStep >= 2 && currentStep <= 4 &&
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Previous </button>
                 <button className="next action-button" onClick={this.nextStep}> Next </button>
               </div>
             }
 
-            {this.state.currentStep === 5 &&
+            {currentStep === 5 &&
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Previous </button>
                 <input type="submit" name="submit" className="submit action-button" value="Submit" />
@@ -91,7 +103,7 @@ class Form extends React.Component {
             <input type="submit" name="submit" className="submit action-button" value="Submit" /> */}
 
             {/* progressbar */}
-            <Stepper currentStep={this.state.currentStep} numberOfStep={this.state.numberOfStep}/>
+            <Stepper currentStep={currentStep} numberOfStep={this.state.numberOfStep}/>
 
             </div>
           </div>
