@@ -148,6 +148,23 @@ fieldset .fs-title {
   grid-row: 5;
 }
 
+.calendar p {
+  font-family: 'Roboto', sans-serif;
+  color: #2C3E50;
+  font-size: 15px;
+}
+
+.calendar .link {
+  background-color: #EA2142;
+  color: white;
+  border: none;
+  margin-left: 65px;
+}
+
+.calendar .link:hover {
+  font-weight: bold;
+}
+
 /*BUTTONS*/
 .action-button {
   background-color: rgba(255,0,0,0);
