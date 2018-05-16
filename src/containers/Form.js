@@ -64,9 +64,31 @@ class Form extends React.Component {
               }
             </form>
 
+            {this.state.currentStep === 1 &&
+              <div className="button-placement">
+                <button className="next action-button" onClick={this.nextStep}> Next </button>
+              </div>
+            }
+
+            {this.state.currentStep >= 2 && this.state.currentStep <= 4 &&
+              <div className="button-placement">
+                <button className="prev action-button" onClick={this.prevStep}> Previous </button>
+                <button className="next action-button" onClick={this.nextStep}> Next </button>
+              </div>
+            }
+
+            {this.state.currentStep === 5 &&
+              <div className="button-placement">
+                <button className="prev action-button" onClick={this.prevStep}> Previous </button>
+                <input type="submit" name="submit" className="submit action-button" value="Submit" />
+              </div>
+            }
+
+
+            {/* BUTTONS
             <button className="next action-button" onClick={this.nextStep}> Next </button>
-            {/* <button className="prev action-button" onClick={this.prevStep}> Previous </button>
-             <input type="submit" name="submit" className="submit action-button" value="Submit" /> */}
+            <button className="prev action-button" onClick={this.prevStep}> Previous </button>
+            <input type="submit" name="submit" className="submit action-button" value="Submit" /> */}
 
             {/* progressbar */}
             <Stepper currentStep={this.state.currentStep} numberOfStep={this.state.numberOfStep}/>

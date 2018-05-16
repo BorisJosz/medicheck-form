@@ -111,18 +111,37 @@ body {
   margin-top: 30px;
 }
 
-.next {
+.button-placement {
+  grid-column: 9 / span 2;
+  grid-row: 17;
+  position: relative;
+}
+
+.button-placement .next {
+  position: absolute;
+  left: 120px;
+}
+
+.button-placement .submit {
+  position: absolute;
+  left: 120px;
+}
+
+/*.next {
   grid-column: 11 / span 2;
   grid-row: 17;
 }
 
 .prev {
-
+  grid-column: 9 / span 2;
+  grid-row: 17;
 }
 
 .submit {
-
-}
+  grid-column: 11 / span 2;
+  grid-row: 17;
+  height: 20px;
+}*/
 
 .action-button:hover, .action-button:focus {
   font-size: 18px;
