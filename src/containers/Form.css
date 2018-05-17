@@ -158,11 +158,11 @@ fieldset .fs-title {
   background-color: #EA2142;
   color: white;
   border: none;
-  margin-left: 65px;
 }
 
 .calendar .link:hover {
   font-weight: bold;
+  font-size: 18px;
 }
 
 /*BUTTONS*/
