@@ -98,7 +98,7 @@ fieldset .fs-title {
 }
 
 /*inputs*/
-#msform input, #msform textarea {
+#msform input {
   /*single red bottom border*/
   border: 0px solid;
   border-bottom: 1px solid #E62B4C;
@@ -109,6 +109,15 @@ fieldset .fs-title {
   font-size: 15px;
   width: 100%;
   padding-bottom: 10px;
+}
+
+#msform textarea {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  color: #2C3E50;
+  font-size: 15px;
+  width: 100%;
+  height: 100px;
 }
 
 #contactPersonName {
@@ -131,14 +140,14 @@ fieldset .fs-title {
   grid-row: 6;
 }
 
-#employeeEmail {
+#employeeAddress {
   grid-column: 2 /span 8;
-  grid-row: 9;
+  grid-row: 12;
 }
 
 #employeePhoneNumber {
   grid-column: 2 /span 8;
-  grid-row: 12;
+  grid-row: 9;
 }
 
 
@@ -164,6 +173,17 @@ fieldset .fs-title {
 .calendar .link:hover {
   font-weight: bold;
   font-size: 20px;
+}
+
+/*COMMENTS*/
+#commentDoctor {
+  grid-column: 2 /span 8;
+  grid-row: 6;
+}
+
+#commentMedicheck {
+  grid-column: 2 /span 8;
+  grid-row: 12;
 }
 
 /*BUTTONS*/
