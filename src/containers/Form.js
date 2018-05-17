@@ -2,11 +2,8 @@ import React from "react";
 import './Form.css';
 import Stepper from '../components/Stepper.js';
 import Toggle from '../components/Toggle.js';
-import DayPicker from 'react-day-picker';
 import Calendar from '../components/Calendar.js';
 
-// Or import the input component
-import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 import 'react-day-picker/lib/style.css';
 
@@ -16,8 +13,26 @@ class Form extends React.Component {
     this.state = {
       currentStep: 1,
       numberOfStep: 5,
-      animationSide: "slideLeft"
-    }
+      animationSide: "slideLeft",
+      contactPersonName: "",
+      contactEmail: "",
+      employeeFirstName: "",
+      employeeLastName: "",
+      employeeEmail: "",
+      employeePhoneNumber: ""
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   prevStep = () => {
@@ -44,22 +59,22 @@ class Form extends React.Component {
             <form id="msform">
               {/* fieldsets */}
               {currentStep === 1 &&
-                <fieldset class={this.state.animationSide}>
+                <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Company Information </h2>
-                    <input type="text" id="contactPersonName" placeholder="Contact person's name" />
-                    <input type="text" id="contactEmail" placeholder="Email address" />
+                    <input id="contactPersonName" name="contactPersonName" type="text" value={this.state.contactPersonName} onChange={this.handleInputChange} placeholder="Contact person's name" />
+                    <input id="contactEmail" name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} placeholder="Email address" />
                   </div>
                 </fieldset>
               }
               {currentStep === 2 &&
-                <fieldset class={this.state.animationSide}>
+                <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Employee Information </h2>
-                    <input type="text" id="employeeFirstName" placeholder="First Name" />
-                    <input type="text" id="employeeLastName" placeholder="Last Name" />
-                    <input type="text" id="employeeEmail" placeholder="Email address" />
-                    <input type="text" id="employeePhoneNumber" placeholder="Phone number" />
+                    <input type="text" id="employeeFirstName" name= "employeeFirstName" placeholder="First Name" />
+                    <input type="text" id="employeeLastName" name="employeeLastName" placeholder="Last Name" />
+                    <input type="text" id="employeeEmail" name="employeeEmail" placeholder="Email address" />
+                    <input type="text" id="employeePhoneNumber" name="employeePhoneNumber" placeholder="Phone number" />
                     <div className="languageQuestion"> The employee speaks </div>
                     <div className="languageQuestion fr"> FR </div>
                     <div className="languageQuestion nl"> NL </div>
@@ -70,7 +85,7 @@ class Form extends React.Component {
                 </fieldset>
               }
               {currentStep === 3 &&
-                <fieldset class={this.state.animationSide}>
+                <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Check Details </h2>
                     <div className="toggleTitles optimizedCheck"> Optimized Check </div>
@@ -93,7 +108,7 @@ class Form extends React.Component {
                 </fieldset>
               }
               {currentStep === 4 &&
-                <fieldset class={this.state.animationSide}>
+                <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
                     <div className="calendar">
@@ -103,7 +118,7 @@ class Form extends React.Component {
                 </fieldset>
               }
               {currentStep === 5 &&
-                <fieldset class={this.state.animationSide}>
+                <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Comments </h2>
 
