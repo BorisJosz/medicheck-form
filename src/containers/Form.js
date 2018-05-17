@@ -19,7 +19,9 @@ class Form extends React.Component {
       employeeFirstName: "",
       employeeLastName: "",
       employeePhoneNumber: "",
-      employeeAddress: ""
+      employeeAddress: "",
+      commentDoctor: "",
+      commentMedicheck: "",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -121,7 +123,8 @@ class Form extends React.Component {
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Comments </h2>
-
+                    <textarea id="commentDoctor" name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} placeholder="Leave your comment for the doctor..." />
+                    <textarea id="commentMedicheck" name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} placeholder="Leave your comment for us at Medicheck..." />
                     </div>
                 </fieldset>
               }
