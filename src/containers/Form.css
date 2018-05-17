@@ -175,6 +175,11 @@ fieldset .fs-title {
   font-size: 20px;
 }
 
+.certificateImageUploader {
+  grid-column: 7 /span 4;
+  grid-row: 8;
+}
+
 /*COMMENTS*/
 #commentDoctor {
   grid-column: 2 /span 8;

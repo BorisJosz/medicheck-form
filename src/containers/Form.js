@@ -37,6 +37,7 @@ class Form extends React.Component {
     });
   }
 
+
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
     this.setState({animationSide: "slideRight"})
@@ -116,6 +117,9 @@ class Form extends React.Component {
                     <div className="calendar">
                       <Calendar />
                     </div>
+                    <div className="certificateImageUploader" >
+
+                    </div>
                   </div>
                 </fieldset>
               }
@@ -149,12 +153,6 @@ class Form extends React.Component {
                 <input type="submit" name="submit" className="submit action-button" value="Submit" />
               </div>
             }
-
-
-            {/* BUTTONS
-            <button className="next action-button" onClick={this.nextStep}> Next </button>
-            <button className="prev action-button" onClick={this.prevStep}> Previous </button>
-            <input type="submit" name="submit" className="submit action-button" value="Submit" /> */}
 
             {/* progressbar */}
             <Stepper currentStep={currentStep} numberOfStep={this.state.numberOfStep}/>
