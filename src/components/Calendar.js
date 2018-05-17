@@ -32,6 +32,15 @@ export default class Calendar extends React.Component {
     return (
       <div className="RangeExample">
         <p>
+          {from &&
+            to && (
+              <button className="link" onClick={this.handleResetClick}>
+                Reset
+              </button>
+            )
+          }
+        </p>
+        <p>
           {!from && !to && 'Please select the first day.'}
           {from && !to && 'Please select the last day.'}
           {from &&
@@ -46,15 +55,6 @@ export default class Calendar extends React.Component {
           modifiers={modifiers}
           onDayClick={this.handleDayClick}
         />
-        <p>
-          {from &&
-            to && (
-              <button className="link" onClick={this.handleResetClick}>
-                Reset
-              </button>
-            )
-          }
-        </p>
         <Helmet>
           <style>{`
   .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
