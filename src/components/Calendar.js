@@ -38,12 +38,6 @@ export default class Calendar extends React.Component {
             to &&
             `Selected from ${from.toLocaleDateString()} to
                 ${to.toLocaleDateString()}`}{' '}
-          {from &&
-            to && (
-              <button className="link" onClick={this.handleResetClick}>
-                Reset
-              </button>
-            )}
         </p>
         <DayPicker
           className="Selectable"
@@ -52,6 +46,15 @@ export default class Calendar extends React.Component {
           modifiers={modifiers}
           onDayClick={this.handleDayClick}
         />
+        <p>
+          {from &&
+            to && (
+              <button className="link" onClick={this.handleResetClick}>
+                Reset
+              </button>
+            )
+          }
+        </p>
         <Helmet>
           <style>{`
   .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
