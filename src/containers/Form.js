@@ -18,8 +18,8 @@ class Form extends React.Component {
       contactEmail: "",
       employeeFirstName: "",
       employeeLastName: "",
-      employeeEmail: "",
-      employeePhoneNumber: ""
+      employeePhoneNumber: "",
+      employeeAddress: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -71,10 +71,10 @@ class Form extends React.Component {
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Employee Information </h2>
-                    <input type="text" id="employeeFirstName" name= "employeeFirstName" placeholder="First Name" />
-                    <input type="text" id="employeeLastName" name="employeeLastName" placeholder="Last Name" />
-                    <input type="text" id="employeeEmail" name="employeeEmail" placeholder="Email address" />
-                    <input type="text" id="employeePhoneNumber" name="employeePhoneNumber" placeholder="Phone number" />
+                    <input id="employeeFirstName" name="employeeFirstName" type="text" value={this.state.employeeFirstName} onChange={this.handleInputChange} placeholder="First Name" />
+                    <input id="employeeLastName" name="employeeLastName" type="text" value={this.state.employeeLastName} onChange={this.handleInputChange} placeholder="Last Name" />
+                    <input id="employeePhoneNumber" name="employeePhoneNumber" type="text" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} placeholder="Phone number" />
+                    <input id="employeeAddress" name="employeeAddress" type="text" value={this.state.employeeAddress} onChange={this.handleInputChange} placeholder="Street Address" />
                     <div className="languageQuestion"> The employee speaks </div>
                     <div className="languageQuestion fr"> FR </div>
                     <div className="languageQuestion nl"> NL </div>

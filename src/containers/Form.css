@@ -131,14 +131,14 @@ fieldset .fs-title {
   grid-row: 6;
 }
 
-#employeeEmail {
+#employeeAddress {
   grid-column: 2 /span 8;
-  grid-row: 9;
+  grid-row: 12;
 }
 
 #employeePhoneNumber {
   grid-column: 2 /span 8;
-  grid-row: 12;
+  grid-row: 9;
 }
 
 
