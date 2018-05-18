@@ -3,6 +3,7 @@ import './Form.css';
 import Stepper from '../components/Stepper.js';
 import Toggle from '../components/Toggle.js';
 import Calendar from '../components/Calendar.js';
+import axios from 'axios';
 
 
 import 'react-day-picker/lib/style.css';
@@ -37,7 +38,6 @@ class Form extends React.Component {
     });
   }
 
-
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
     this.setState({animationSide: "slideRight"})
@@ -48,6 +48,18 @@ class Form extends React.Component {
   nextStep = () => {
     this.setState({currentStep: this.state.currentStep + 1});
     this.setState({animationSide: "slideLeft"})
+  }
+
+  submitStep = () => {
+    axios.post('http://localhost:3000/', {
+      contactPersonName: this.state.contactPersonName,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {
@@ -150,7 +162,7 @@ class Form extends React.Component {
             {currentStep === 5 &&
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Previous </button>
-                <input type="submit" name="submit" className="submit action-button" value="Submit" />
+                <button className="submit action-button" onClick={this.submitStep}> Submit </button>
               </div>
             }
 
