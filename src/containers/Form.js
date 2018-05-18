@@ -53,6 +53,13 @@ class Form extends React.Component {
   submitStep = () => {
     axios.post('http://localhost:3000/', {
       contactPersonName: this.state.contactPersonName,
+      contactEmail: this.state.contactEmail,
+      employeeFirstName: this.state.employeeFirstName,
+      employeeLastName: this.state.employeeLastName,
+      employeePhoneNumber: this.state.employeePhoneNumber,
+      employeeAddress: this.state.employeeAddress,
+      commentDoctor: this.state.commentDoctor,
+      commentMedicheck: this.state.commentMedicheck,
     })
     .then(function (response) {
       console.log(response);
