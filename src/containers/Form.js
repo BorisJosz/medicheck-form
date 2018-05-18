@@ -3,6 +3,7 @@ import './Form.css';
 import Stepper from '../components/Stepper.js';
 import Toggle from '../components/Toggle.js';
 import Calendar from '../components/Calendar.js';
+import axios from 'axios';
 
 
 import 'react-day-picker/lib/style.css';
@@ -37,7 +38,6 @@ class Form extends React.Component {
     });
   }
 
-
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
     this.setState({animationSide: "slideRight"})
@@ -48,6 +48,35 @@ class Form extends React.Component {
   nextStep = () => {
     this.setState({currentStep: this.state.currentStep + 1});
     this.setState({animationSide: "slideLeft"})
+  }
+
+  // POST REQUEST
+  submitStep = () => {
+    let bodyFormData = new FormData();
+    bodyFormData.set('employeeFirstName', this.state.employeeFirstName);
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/',
+      data: {
+        contactPersonName: this.state.contactPersonName,
+        contactEmail: this.state.contactEmail,
+        employeeFirstName: this.state.employeeFirstName,
+        employeeLastName: this.state.employeeLastName,
+        employeePhoneNumber: this.state.employeePhoneNumber,
+        employeeAddress: this.state.employeeAddress,
+        commentDoctor: this.state.commentDoctor,
+        commentMedicheck: this.state.commentMedicheck,
+      },
+      config: { headers: {'Content-Type': 'application/json' }}
+    })
+    .then(function (response) {
+      //handle success
+      console.log(response);
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
   }
 
   render() {
@@ -150,7 +179,7 @@ class Form extends React.Component {
             {currentStep === 5 &&
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Previous </button>
-                <input type="submit" name="submit" className="submit action-button" value="Submit" />
+                <button className="submit action-button" onClick={this.submitStep}> Submit </button>
               </div>
             }
 
