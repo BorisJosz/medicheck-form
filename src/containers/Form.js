@@ -50,22 +50,32 @@ class Form extends React.Component {
     this.setState({animationSide: "slideLeft"})
   }
 
+  // POST REQUEST
   submitStep = () => {
-    axios.post('http://localhost:3000/', {
-      contactPersonName: this.state.contactPersonName,
-      contactEmail: this.state.contactEmail,
-      employeeFirstName: this.state.employeeFirstName,
-      employeeLastName: this.state.employeeLastName,
-      employeePhoneNumber: this.state.employeePhoneNumber,
-      employeeAddress: this.state.employeeAddress,
-      commentDoctor: this.state.commentDoctor,
-      commentMedicheck: this.state.commentMedicheck,
+    let bodyFormData = new FormData();
+    bodyFormData.set('employeeFirstName', this.state.employeeFirstName);
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/',
+      data: {
+        contactPersonName: this.state.contactPersonName,
+        contactEmail: this.state.contactEmail,
+        employeeFirstName: this.state.employeeFirstName,
+        employeeLastName: this.state.employeeLastName,
+        employeePhoneNumber: this.state.employeePhoneNumber,
+        employeeAddress: this.state.employeeAddress,
+        commentDoctor: this.state.commentDoctor,
+        commentMedicheck: this.state.commentMedicheck,
+      },
+      config: { headers: {'Content-Type': 'application/json' }}
     })
     .then(function (response) {
+      //handle success
       console.log(response);
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function (response) {
+      //handle error
+      console.log(response);
     });
   }
 
