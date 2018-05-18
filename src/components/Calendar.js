@@ -5,7 +5,7 @@ import 'react-day-picker/lib/style.css';
 
 export default class Calendar extends React.Component {
   static defaultProps = {
-    numberOfMonths: 1,
+    numberOfMonths: 2,
   };
   constructor(props) {
     super(props);
