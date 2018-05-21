@@ -23,6 +23,7 @@ class Form extends React.Component {
       employeeAddress: "",
       commentDoctor: "",
       commentMedicheck: "",
+      languageToggle: "",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -66,6 +67,9 @@ class Form extends React.Component {
         employeeAddress: this.state.employeeAddress,
         commentDoctor: this.state.commentDoctor,
         commentMedicheck: this.state.commentMedicheck,
+        languageToggle: this.state.languageToggle.isChecked,
+        from: undefined,
+        to: undefined,
       },
       config: { headers: {'Content-Type': 'application/json' }}
     })
@@ -111,7 +115,7 @@ class Form extends React.Component {
                     <div className="languageQuestion fr"> FR </div>
                     <div className="languageQuestion nl"> NL </div>
                     <div className="toggleLanguage">
-                      <Toggle />
+                      <Toggle id="languageToggle" name="languageToggle" />
                     </div>
                   </div>
                 </fieldset>
@@ -144,7 +148,9 @@ class Form extends React.Component {
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
                     <div className="calendar">
-                      <Calendar />
+                      <Calendar handleDayClick={this.changeDate} from={this.state.from} to={this.state.to}/>
+                      {/* nico's modifications to keep date */}
+                      {/* <Calendar handleDayClick={this.changeDate} from={this.state.from} to={this.state.to}/> */}
                     </div>
                     <div className="certificateImageUploader" >
 
