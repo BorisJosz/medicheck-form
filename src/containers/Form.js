@@ -1,7 +1,8 @@
 import React from "react";
 import './Form.css';
 import Stepper from '../components/Stepper.js';
-import Toggle from '../components/Toggle.js';
+// import Toggle from '../components/Toggle.js';
+import '../components/Toggle.css';
 
 // added stuff
 import axios from 'axios';
@@ -24,10 +25,16 @@ class Form extends React.Component {
       employeeAddress: "",
       commentDoctor: "",
       commentMedicheck: "",
-      languageToggle: "",
+      startDate: undefined,
+      endDate: undefined,
+      checked: true,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleCheck = () => {
+    this.setState({checked: !this.state.checked});
   }
 
   handleInputChange(event) {
@@ -66,9 +73,9 @@ class Form extends React.Component {
         employeeAddress: this.state.employeeAddress,
         commentDoctor: this.state.commentDoctor,
         commentMedicheck: this.state.commentMedicheck,
-        languageToggle: this.state.languageToggle.isChecked,
-        from: undefined,
-        to: undefined,
+        startDate: this.state.startDate,
+        endDate: this.state.endDate,
+        checked: this.state.checked,
       },
       config: { headers: {'Content-Type': 'application/json' }}
     })
@@ -92,7 +99,6 @@ class Form extends React.Component {
             <div className="formText title"> Launch a Check </div>
 
             <form id="msform">
-              {/* fieldsets */}
               {currentStep === 1 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
@@ -114,7 +120,10 @@ class Form extends React.Component {
                     <div className="languageQuestion fr"> FR </div>
                     <div className="languageQuestion nl"> NL </div>
                     <div className="toggleLanguage">
-                      <Toggle id="languageToggle" name="languageToggle" />
+                      <label className="switch">
+                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                        <div className="slider"></div>
+                      </label>
                     </div>
                   </div>
                 </fieldset>
@@ -126,7 +135,7 @@ class Form extends React.Component {
                     <div className="toggleTitles optimizedCheck"> Optimized Check </div>
                     <div className="toggleDetailsText optimized"> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </div>
                     <div className="toggle-1">
-                      <Toggle />
+
                     </div>
                     <div className="toggleTitles immediateCheck"> Immediate Check </div>
                     <div className="toggleDetailsText immediate"> Allows for the check to happen in the shortest delays possible </div>
@@ -134,7 +143,7 @@ class Form extends React.Component {
                     <div className="toggleTitles doctorsOffice"> At the doctor's cabinet </div>
                     <div className="toggleDetailsText doctor"> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordacne with the positive approach that your employer has chosen to partake in </div>
                     <div className="toggle-2">
-                      <Toggle />
+
                     </div>
                     <div className="toggleTitles atHome"> At the employee's home </div>
                     <div className="toggleDetailsText home"> Checks at home are recommended only in cases where the employee is required to stay home </div>
@@ -147,8 +156,6 @@ class Form extends React.Component {
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
                     <div className="calendar">
-                      {/* nico's modifications to keep date */}
-                      {/* <Calendar handleDayClick={this.changeDate} from={this.state.from} to={this.state.to}/> */}
                       <DateRangePicker
                         startDateId="startDate"
                         endDateId="endDate"
