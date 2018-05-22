@@ -2,11 +2,12 @@ import React from "react";
 import './Form.css';
 import Stepper from '../components/Stepper.js';
 import Toggle from '../components/Toggle.js';
-import Calendar from '../components/Calendar.js';
+
+// added stuff
 import axios from 'axios';
-
-
-import 'react-day-picker/lib/style.css';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker } from 'react-dates';
 
 class Form extends React.Component {
   constructor(props){
@@ -148,6 +149,15 @@ class Form extends React.Component {
                     <div className="calendar">
                       {/* nico's modifications to keep date */}
                       {/* <Calendar handleDayClick={this.changeDate} from={this.state.from} to={this.state.to}/> */}
+                      <DateRangePicker
+                        startDateId="startDate"
+                        endDateId="endDate"
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
+                        focusedInput={this.state.focusedInput}
+                        onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+                      />
                     </div>
                     <div className="certificateImageUploader" >
 
