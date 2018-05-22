@@ -53,8 +53,6 @@ class Form extends React.Component {
 
   // POST REQUEST
   submitStep = () => {
-    let bodyFormData = new FormData();
-    bodyFormData.set('employeeFirstName', this.state.employeeFirstName);
     axios({
       method: 'post',
       url: 'http://localhost:3000/',
@@ -148,7 +146,6 @@ class Form extends React.Component {
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
                     <div className="calendar">
-                      <Calendar handleDayClick={this.changeDate} from={this.state.from} to={this.state.to}/>
                       {/* nico's modifications to keep date */}
                       {/* <Calendar handleDayClick={this.changeDate} from={this.state.from} to={this.state.to}/> */}
                     </div>
