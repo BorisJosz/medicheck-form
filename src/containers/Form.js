@@ -27,21 +27,24 @@ class Form extends React.Component {
       commentMedicheck: "",
       startDate: undefined,
       endDate: undefined,
-      checked: true,
+      employeeLanguage: true,
+      optimizedCheck: true,
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleCheck = () => {
-    this.setState({checked: !this.state.checked});
+  handleCheck = event => {
+    const target = event.target;
+    const name = target.name
+    const value = target.value
+    this.setState({
+      [name]: !value
+    });
   }
 
-  handleInputChange(event) {
+  handleInputChange = event => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-
     this.setState({
       [name]: value
     });
@@ -75,7 +78,8 @@ class Form extends React.Component {
         commentMedicheck: this.state.commentMedicheck,
         startDate: this.state.startDate,
         endDate: this.state.endDate,
-        checked: this.state.checked,
+        employeeLanguage: this.state.employeeLanguage,
+        optimizedCheck: this.state.optimizedCheck,
       },
       config: { headers: {'Content-Type': 'application/json' }}
     })
@@ -119,12 +123,15 @@ class Form extends React.Component {
                     <div className="languageQuestion"> The employee speaks </div>
                     <div className="languageQuestion fr"> FR </div>
                     <div className="languageQuestion nl"> NL </div>
+
+                    {/* TOGGLE */}
                     <div className="toggleLanguage">
                       <label className="switch">
-                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                        <input name="employeeLanguage" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.employeeLanguage} value={this.state.employeeLanguage} />
                         <div className="slider"></div>
                       </label>
                     </div>
+                    
                   </div>
                 </fieldset>
               }
@@ -135,7 +142,10 @@ class Form extends React.Component {
                     <div className="toggleTitles optimizedCheck"> Optimized Check </div>
                     <div className="toggleDetailsText optimized"> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </div>
                     <div className="toggle-1">
-
+                      <label className="switch">
+                        <input name="optimizedCheck" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.optimizedCheck} value={this.state.optimizedCheck} />
+                        <div className="slider"></div>
+                      </label>
                     </div>
                     <div className="toggleTitles immediateCheck"> Immediate Check </div>
                     <div className="toggleDetailsText immediate"> Allows for the check to happen in the shortest delays possible </div>
