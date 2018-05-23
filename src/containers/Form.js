@@ -129,7 +129,12 @@ class Form extends React.Component {
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Company Information </h2>
-                    <input id="contactPersonName" name="contactPersonName" type="text" value={this.state.contactPersonName} onChange={this.handleInputChange} placeholder="Contact person's name" />
+                    
+                    <div id="contactPersonName">
+                      <input name="contactPersonName" type="text" required value={this.state.contactPersonName} onChange={this.handleInputChange} />
+                      <label htmlFor="contactPersonName">Contact Person's name</label>
+                    </div>
+                    
                     <input id="contactEmail" name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} placeholder="Email address" />
                   </div>
                 </fieldset>
