@@ -29,6 +29,7 @@ class Form extends React.Component {
       endDate: undefined,
       employeeLanguage: true,
       optimizedCheck: true,
+      atHome: true,
     };
   }
 
@@ -80,6 +81,7 @@ class Form extends React.Component {
         endDate: this.state.endDate,
         employeeLanguage: this.state.employeeLanguage,
         optimizedCheck: this.state.optimizedCheck,
+        atHome: this.state.atHome,
       },
       config: { headers: {'Content-Type': 'application/json' }}
     })
@@ -153,7 +155,10 @@ class Form extends React.Component {
                     <div className="toggleTitles doctorsOffice"> At the doctor's cabinet </div>
                     <div className="toggleDetailsText doctor"> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordacne with the positive approach that your employer has chosen to partake in </div>
                     <div className="toggle-2">
-
+                      <label className="switch">
+                        <input name="atHome" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.atHome} value={this.state.atHome} />
+                        <div className="slider"></div>
+                      </label>
                     </div>
                     <div className="toggleTitles atHome"> At the employee's home </div>
                     <div className="toggleDetailsText home"> Checks at home are recommended only in cases where the employee is required to stay home </div>
