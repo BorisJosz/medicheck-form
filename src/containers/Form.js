@@ -197,14 +197,17 @@ class Form extends React.Component {
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
                     <div className="calendar">
-                      <DateRangePicker
+                      <DateRangePicker 
                         startDateId="startDate"
                         endDateId="endDate"
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
                         onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
                         focusedInput={this.state.focusedInput}
-                        onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+                        onFocusChange={(focusedInput) => { 
+                          if (!focusedInput) return;
+                          this.setState({ focusedInput })}}
+                       
                       />
                     </div>
                     <div className="certificateImageUploader" >

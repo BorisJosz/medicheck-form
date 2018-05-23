@@ -1,3 +1,24 @@
+/* DATE RANGE PICKER */
+.DateRangePickerInput__withBorder {
+  border: none !important;
+}
+
+
+/*CALENDAR*/
+.calendar {
+  grid-column: 1 /span 10;
+  grid-row: 4;
+}
+
+.certificateImageUploader {
+  grid-column: 7 /span 4;
+  grid-row: 8;
+}
+
+.DateRangePicker_picker {
+  left: -120px !important;
+}
+
 /*BACKGROUND*/
 /*PAGE*/
 .container {
@@ -144,36 +165,6 @@ fieldset .fs-title {
 #employeePhoneNumber {
   grid-column: 2 /span 8;
   grid-row: 9;
-}
-
-
-/*CALENDAR*/
-.calendar {
-  grid-column: 1 /span 10;
-  grid-row: 4;
-}
-
-.calendar p {
-  font-family: 'Roboto', sans-serif;
-  color: #2C3E50;
-  font-size: 15px;
-}
-
-.calendar .link {
-  background-color: #EA2142;
-  font-size: 18px;
-  color: white;
-  border: none;
-}
-
-.calendar .link:hover {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.certificateImageUploader {
-  grid-column: 7 /span 4;
-  grid-row: 8;
 }
 
 /*COMMENTS*/
