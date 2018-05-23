@@ -1,5 +1,6 @@
 import React from "react";
 import './Form.css';
+import './Label.css';
 import Stepper from '../components/Stepper.js';
 import '../components/Toggle.css';
 
@@ -130,9 +131,9 @@ class Form extends React.Component {
                   <div className="grid-display">
                     <h2 className="fs-title"> Company Information </h2>
                     
-                    <div id="contactPersonName">
-                      <input name="contactPersonName" type="text" required value={this.state.contactPersonName} onChange={this.handleInputChange} />
-                      <label htmlFor="contactPersonName">Contact Person's name</label>
+                    <div id="contactPersonName" className="form-group">
+                      <input className="form-control" name="contactPersonName" type="text" required value={this.state.contactPersonName} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="contactPersonName">Contact Person's name</label>
                     </div>
                     
                     <input id="contactEmail" name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} placeholder="Email address" />

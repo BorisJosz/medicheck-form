@@ -145,7 +145,6 @@ fieldset .fs-title {
 #contactPersonName {
   grid-column: 2 /span 8;
   grid-row: 8;
-  position: relative;
 }
 
 #contactEmail {
