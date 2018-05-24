@@ -236,9 +236,9 @@ class Form extends React.Component {
                         onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
                         focusedInput={this.state.focusedInput}
                         onFocusChange={(focusedInput) => { 
-                          if (!focusedInput) return;
+                          // if (!focusedInput) return;
                           this.setState({ focusedInput })}}
-                       
+                        displayFormat="MMM D"
                       />
                     </div>
                     <div className="certificateImageUploader" >
