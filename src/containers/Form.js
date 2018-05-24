@@ -1,4 +1,6 @@
 import React from "react";
+
+// other file imports
 import './Form.css';
 import './Label.css';
 import Stepper from '../components/Stepper.js';
@@ -33,20 +35,19 @@ class Form extends React.Component {
     };
   }
 
+  // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
     let elementFr = document.getElementById("fr");
     elementFr.classList.toggle("toggleActive");
     let elementNl = document.getElementById("nl");
     elementNl.classList.toggle("toggleActive");
   }
-
   toggleCssOptimized = () => {
     let elementOp = document.getElementById("optimized");
     elementOp.classList.toggle("toggleActive");
     let elementIm = document.getElementById("immediate");
     elementIm.classList.toggle("toggleActive");
   }
-
   toggleCssHome = () => {
     let elementDo = document.getElementById("doctorsOffice");
     elementDo.classList.toggle("toggleActive");
@@ -54,6 +55,7 @@ class Form extends React.Component {
     elementAh.classList.toggle("toggleActive");
   }
 
+  // EVENT HANDLERS
   handleCheck = event => {
     const target = event.target;
     const name = target.name
@@ -62,7 +64,6 @@ class Form extends React.Component {
       [name]: !value
     });
   }
-
   handleInputChange = event => {
     const target = event.target;
     const value = target.value;
@@ -72,13 +73,12 @@ class Form extends React.Component {
     });
   }
 
+  // PREV & NEXT BUTTON
+  // I want my prevStep method to also change the class of my fieldset to slideRight
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
     this.setState({animationSide: "slideRight"})
   }
-
-  // I want my prevStep method to also change the class of my fieldset to slideRight
-
   nextStep = () => {
     this.setState({currentStep: this.state.currentStep + 1});
     this.setState({animationSide: "slideLeft"})
@@ -242,7 +242,10 @@ class Form extends React.Component {
                       />
                     </div>
                     <div className="certificateImageUploader" >
-
+                    <label for="file-upload" class="custom-file-upload">
+                        Upload
+                    </label>
+                    <input id="file-upload" type="file"/>
                     </div>
                   </div>
                 </fieldset>
