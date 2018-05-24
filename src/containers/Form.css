@@ -8,6 +8,14 @@
   margin-top: 40px;
 }
 
+.DateInput_input {
+  padding: 0px !important;
+}
+
+.DateRangePickerInput_arrow {
+  padding: 0px 10px !important;
+}
+
 .DateRangePicker_picker {
   left: -140px !important;
 }
