@@ -1,3 +1,30 @@
+/* DATE RANGE PICKER */
+.DateRangePickerInput__withBorder {
+  border: none !important;
+}
+
+.DateRangePicker {
+  margin-left: 140px;
+  margin-top: 40px;
+}
+
+.DateRangePicker_picker {
+  left: -140px !important;
+}
+
+/*CALENDAR*/
+.calendar {
+  grid-column: 1 /span 10;
+  grid-row: 4;
+}
+
+.certificateImageUploader {
+  grid-column: 7 /span 4;
+  grid-row: 8;
+}
+
+
+
 /*BACKGROUND*/
 /*PAGE*/
 .container {
@@ -60,7 +87,6 @@ body {
 
 /*form styles*/
 #msform {
-  text-align: center;
   grid-column: 3;
   grid-row: 4;
   z-index: 1;
@@ -88,12 +114,12 @@ fieldset .fs-title {
   font-size: 24px;
   text-transform: uppercase;
   color: #243365;
-  margin-bottom: 50px;
+  text-align: center;
   grid-column: 3 /span 6;
   grid-row: 1;
 }
 
-/*inputs*/
+/*INPUTS*/
 #msform input {
   /*single red bottom border*/
   border: 0px solid;
@@ -104,8 +130,8 @@ fieldset .fs-title {
   color: #2C3E50;
   font-size: 15px;
   width: 100%;
-  padding-bottom: 10px;
 }
+
 
 #msform textarea {
   box-sizing: border-box;
@@ -144,36 +170,6 @@ fieldset .fs-title {
 #employeePhoneNumber {
   grid-column: 2 /span 8;
   grid-row: 9;
-}
-
-
-/*CALENDAR*/
-.calendar {
-  grid-column: 1 /span 10;
-  grid-row: 4;
-}
-
-.calendar p {
-  font-family: 'Roboto', sans-serif;
-  color: #2C3E50;
-  font-size: 15px;
-}
-
-.calendar .link {
-  background-color: #EA2142;
-  font-size: 18px;
-  color: white;
-  border: none;
-}
-
-.calendar .link:hover {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.certificateImageUploader {
-  grid-column: 7 /span 4;
-  grid-row: 8;
 }
 
 /*COMMENTS*/

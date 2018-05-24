@@ -1,3 +1,8 @@
+.toggleActive {
+  color: #E62B4C !important;
+  font-size: 18px !important;
+}
+
 .languageQuestion {
   grid-column: 2 /span 8;
   grid-row: 16;
@@ -21,13 +26,15 @@
 }
 
 .toggle-1 {
-  grid-column: 2 /span 8;
-  grid-row: 8;
+  grid-column: 5;
+  grid-row: 7;
+  margin-left: 40px;
 }
 
 .toggle-2 {
-  grid-column: 2 /span 8;
-  grid-row: 14;
+  grid-column: 5;
+  grid-row: 13;
+  margin-left: 40px;
 }
 
 /*CHECK DETAILS Formatting*/
