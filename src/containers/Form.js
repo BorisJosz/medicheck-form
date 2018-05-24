@@ -131,12 +131,14 @@ class Form extends React.Component {
                   <div className="grid-display">
                     <h2 className="fs-title"> Company Information </h2>
                     
-                    <div id="contactPersonName" className="form-group">
-                      <input className="form-control" name="contactPersonName" type="text" required value={this.state.contactPersonName} onChange={this.handleInputChange} />
+                    <div className="form-group" id="contactPersonName">
+                      <input className="form-control" required name="contactPersonName" type="text" value={this.state.contactPersonName} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="contactPersonName">Contact Person's name</label>
                     </div>
-                    
-                    <input id="contactEmail" name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} placeholder="Email address" />
+                    <div className="form-group" id="contactEmail">
+                      <input className="form-control" required name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="contactEmail">Email address</label>
+                    </div>
                   </div>
                 </fieldset>
               }
@@ -144,10 +146,33 @@ class Form extends React.Component {
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Employee Information </h2>
-                    <input id="employeeFirstName" name="employeeFirstName" type="text" value={this.state.employeeFirstName} onChange={this.handleInputChange} placeholder="First Name" />
-                    <input id="employeeLastName" name="employeeLastName" type="text" value={this.state.employeeLastName} onChange={this.handleInputChange} placeholder="Last Name" />
-                    <input id="employeePhoneNumber" name="employeePhoneNumber" type="text" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} placeholder="Phone number" />
-                    <input id="employeeAddress" name="employeeAddress" type="text" value={this.state.employeeAddress} onChange={this.handleInputChange} placeholder="Street Address" />
+
+                    {/* FIRST NAME */}
+                    <div className="form-group" id="employeeFirstName">
+                      <input className="form-control" required name="employeeFirstName" type="text" value={this.state.employeeFirstName} onChange={this.handleInputChange}/>
+                      <label className="form-control-placeholder" htmlFor="employeeFirstName">First Name</label>
+                    </div>
+                    
+                    {/* LAST NAME */}
+                    <div className="form-group" id="employeeLastName">
+                      <input className="form-control" required name="employeeLastName" type="text" value={this.state.employeeLastName} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="employeeLastName">Last Name</label>
+                    </div>
+                    
+
+                    {/* PHONE NUMBER */}
+                    <div className="form-group" id="employeePhoneNumber">
+                      <input className="form-control" required name="employeePhoneNumber" type="text" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Phone Number</label>
+                    </div>
+
+                    {/* EMPLOYEE ADDRESS */}
+                    <div className="form-group" id="employeeAddress">
+                      <input className="form-control" required name="employeeAddress" type="text" value={this.state.employeeAddress} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="employeeAddress">Street Address</label>
+                    </div>
+                    
+
                     <div className="languageQuestion"> The employee speaks </div>
 
                     {/* Toggle options */}
@@ -226,8 +251,19 @@ class Form extends React.Component {
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Comments </h2>
-                    <textarea id="commentDoctor" name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} placeholder="Leave your comment for the doctor..." />
-                    <textarea id="commentMedicheck" name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} placeholder="Leave your comment for us at Medicheck..." />
+
+                    {/* COMMENT FOR THE DOCTOR */}
+                    <div className="form-group" id="commentDoctor">
+                      <textarea className="form-control" required name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="commentDoctor">Leave your comment for the doctor here..</label>
+                    </div>
+                   
+                    {/* COMMENT FOR MEDICHECK */}
+                    <div className="form-group" id="commentMedicheck">
+                      <textarea className="form-control" required name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="commentMedicheck">Leave your comment for Medicheck here..</label>
+                    </div>
+                    
                     </div>
                 </fieldset>
               }
