@@ -12,6 +12,7 @@ import axios from 'axios';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
 
 class Form extends React.Component {
   constructor(props){
@@ -60,14 +61,15 @@ class Form extends React.Component {
   }
 
   // EVENT HANDLERS
+  // toggle handler
   handleCheck = event => {
     const target = event.target;
     const name = target.name
-    const value = target.value
     this.setState({
-      [name]: !value
+      [name]: !this.value
     });
   }
+  // input handler
   handleInputChange = event => {
     const target = event.target;
     const value = target.value;
@@ -76,7 +78,9 @@ class Form extends React.Component {
       [name]: value
     });
   }
+  // image handler
   onImageChange = event => {
+    this.setState({'medicalCertificate': event.target.files[0]})
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (e) => {
@@ -85,6 +89,7 @@ class Form extends React.Component {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+  // button handlers
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
     this.setState({animationSide: "slideRight"})
@@ -125,18 +130,17 @@ class Form extends React.Component {
       employeeLanguage: spokenLanguage,
       optimizedCheck: optimizedCheckIf,
       atHome: checkLocation,
-      startDate: this.state.startDate,
-      endDate: this.state.endDate,
+      startDate: moment(this.state.startDate).format("MMMM D, YYYY"),
+      endDate: moment(this.state.endDate).format("MMMM D, YYYY"),
       commentDoctor: this.state.commentDoctor,
       commentMedicheck: this.state.commentMedicheck,
     }
     const medicalCertificate = this.state.medicalCertificate
-
     const formData = new FormData()
     formData.append('medicalCertificate', medicalCertificate)
     formData.append('payload', JSON.stringify(payload))
     // axios.post(`http://localhost:3000/`, formData)
-
+    
     axios({
       method: 'post',
       url: 'http://localhost:3000/',
@@ -242,7 +246,7 @@ class Form extends React.Component {
 
                     <div className="toggle-1">
                       <label className="switch">
-                        <input onClick={this.toggleCssOptimized} name="optimizedCheck" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.optimizedCheck} value={this.state.optimizedCheck} />
+                        <input onClick={this.toggleCssOptimized} name="optimizedCheck" type="checkbox" onClick={this.handleCheck} defaultChecked={this.state.optimizedCheck} value={this.state.optimizedCheck} />
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -254,7 +258,7 @@ class Form extends React.Component {
                     
                     <div className="toggle-2">
                       <label className="switch">
-                        <input onClick={this.toggleCssHome} name="atHome" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.atHome} value={this.state.atHome} />
+                        <input onClick={this.toggleCssHome} name="atHome" type="checkbox" onClick={this.handleCheck} defaultChecked={this.state.atHome} value={this.state.atHome} />
                         <div className="slider"></div>
                       </label>
                     </div>
