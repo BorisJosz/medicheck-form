@@ -61,23 +61,15 @@ class Form extends React.Component {
   }
 
   // EVENT HANDLERS
-  // toggle handler
-  handleCheck = event => {
-    const target = event.target;
-    const name = target.name
-    const value = target.value
-    this.setState({
-      [name]: !value
-    });
-  }
   // input handler
   handleInputChange = event => {
     const target = event.target;
-    const value = target.value;
+    const value = target.type === 'checkbox'? target.checked : target.value;
     const name = target.name;
     this.setState({
       [name]: value
     });
+    console.log(event.target.checked)
   }
   // image handler
   onImageChange = event => {
@@ -227,7 +219,7 @@ class Form extends React.Component {
                     {/* TOGGLE */}
                     <div className="toggleLanguage">
                       <label className="switch">
-                        <input onClick={this.toggleCssLanguage} name="employeeLanguage" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.employeeLanguage} value={this.state.employeeLanguage} />
+                        <input name="employeeLanguage" type="checkbox" checked={this.state.employeeLanguage} onChange={this.handleInputChange}/>
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -248,7 +240,7 @@ class Form extends React.Component {
 
                     <div className="toggle-1">
                       <label className="switch">
-                        <input onClick={this.toggleCssOptimized} name="optimizedCheck" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.optimizedCheck} value={this.state.optimizedCheck} />
+                      <input name="optimizedCheck" type="checkbox" checked={this.state.optimizedCheck} onChange={this.handleInputChange}/>
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -260,7 +252,7 @@ class Form extends React.Component {
                     
                     <div className="toggle-2">
                       <label className="switch">
-                        <input onClick={this.toggleCssHome} name="atHome" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.atHome} value={this.state.atHome} />
+                      <input name="atHome" type="checkbox" checked={this.state.atHome} onChange={this.handleInputChange}/>
                         <div className="slider"></div>
                       </label>
                     </div>
