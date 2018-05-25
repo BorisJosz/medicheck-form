@@ -76,28 +76,6 @@ class Form extends React.Component {
       [name]: value
     });
   }
-
-
-  // onImageChange = event => {
-  //   console.log(event.target.files[0].name);
-  //   this.setState({medicalCertificate: event.target.files[0]});
-  // }
-
-  // previewFile= (event) => {
-  //   console.log(event.target.files[0])
-  //   var preview = document.querySelector('img');
-  //   var file    = document.querySelector('input[type=file]').files[0];
-  //   var reader  = new FileReader();
-  
-  //   reader.addEventListener("load", function () {
-  //     preview.src = reader.result;
-  //   }, false);
-  
-  //   if (file) {
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-
   onImageChange = event => {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
@@ -107,21 +85,6 @@ class Form extends React.Component {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
-  // handleChange = event => {
-  //   console.log(event.target.files[0].name)
-
-  //   // NEED TO SEND AS FORMDATA
-  //   // {event.target.files[0]}
-
-
-  //   // User cancelled
-  //   if (!event.target.files[0]) {
-  //     return
-  //   }
-  // }
-
-  // PREV & NEXT BUTTON
-  // I want my prevStep method to also change the class of my fieldset to slideRight
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
     this.setState({animationSide: "slideRight"})
@@ -130,31 +93,57 @@ class Form extends React.Component {
     this.setState({currentStep: this.state.currentStep + 1});
     this.setState({animationSide: "slideLeft"})
   }
-
   submitStep = (path, document, newName) => {
-    // const payload = {
-    //   contactPersonName: this.state.contactPersonName,
-    //   contactEmail: this.state.contactEmail,
-    //   employeeFirstName: this.state.employeeFirstName,
-    //   employeeLastName: this.state.employeeLastName,
-    //   employeePhoneNumber: this.state.employeePhoneNumber,
-    //   employeeAddress: this.state.employeeAddress,
-    //   employeeLanguage: this.state.employeeLanguage,
-    //   optimizedCheck: this.state.optimizedCheck,
-    //   atHome: this.state.atHome,
-    //   startDate: this.state.startDate,
-    //   endDate: this.state.endDate,
-    //   commentDoctor: this.state.commentDoctor,
-    //   commentMedicheck: this.state.commentMedicheck,
-    // }
+    let spokenLanguage;
+    if (this.state.employeeLanguage) {
+      spokenLanguage = "NL"
+    } else { 
+      spokenLanguage = "FR"
+    }
+
+    let optimizedCheckIf;
+    if (this.state.employeeLanguage) {
+      optimizedCheckIf = "Immediate Check"
+    } else { 
+      optimizedCheckIf = "Optimized Check"
+    }
+
+    let checkLocation;
+    if (this.state.atHome) {
+      checkLocation = "At the employee's home"
+    } else { 
+      checkLocation = "At the doctor's cabinet"
+    }
+
+    const payload = {
+      contactPersonName: this.state.contactPersonName,
+      contactEmail: this.state.contactEmail,
+      employeeFirstName: this.state.employeeFirstName,
+      employeeLastName: this.state.employeeLastName,
+      employeePhoneNumber: this.state.employeePhoneNumber,
+      employeeAddress: this.state.employeeAddress,
+      employeeLanguage: spokenLanguage,
+      optimizedCheck: optimizedCheckIf,
+      atHome: checkLocation,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      commentDoctor: this.state.commentDoctor,
+      commentMedicheck: this.state.commentMedicheck,
+    }
     const medicalCertificate = this.state.medicalCertificate
 
     const formData = new FormData()
     formData.append('medicalCertificate', medicalCertificate)
-    formData.append('contactPersonName', this.state.contactPersonName)
-    formData.append('contactEmail', this.state.contactEmail)
-    formData.append('employeeFirstName', this.state.employeeFirstName)
-    axios.post(`http://localhost:3000/`, formData)
+    formData.append('payload', JSON.stringify(payload))
+    // axios.post(`http://localhost:3000/`, formData)
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/',
+      data: formData,
+      config: { headers: {'Content-Type': 'multipart/form-data' }}
+    })
+      
     .then(function (response) {
       //handle success
       console.log(response);
@@ -163,7 +152,7 @@ class Form extends React.Component {
       //handle error
       console.log(response);
     });
-}
+  }
 
 
   render() {
