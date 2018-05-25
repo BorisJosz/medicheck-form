@@ -5,6 +5,7 @@ import './Form.css';
 import './Label.css';
 import Stepper from '../components/Stepper.js';
 import '../components/Toggle.css';
+import './api.js';
 
 // added stuff
 import axios from 'axios';
@@ -32,8 +33,11 @@ class Form extends React.Component {
       employeeLanguage: false,
       optimizedCheck: false,
       atHome: false,
+      medicalCertificate: null,
+      preview: null,
     };
   }
+
 
   // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
@@ -73,6 +77,49 @@ class Form extends React.Component {
     });
   }
 
+
+  // onImageChange = event => {
+  //   console.log(event.target.files[0].name);
+  //   this.setState({medicalCertificate: event.target.files[0]});
+  // }
+
+  // previewFile= (event) => {
+  //   console.log(event.target.files[0])
+  //   var preview = document.querySelector('img');
+  //   var file    = document.querySelector('input[type=file]').files[0];
+  //   var reader  = new FileReader();
+  
+  //   reader.addEventListener("load", function () {
+  //     preview.src = reader.result;
+  //   }, false);
+  
+  //   if (file) {
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
+  onImageChange = event => {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+          this.setState({preview: e.target.result});
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  // handleChange = event => {
+  //   console.log(event.target.files[0].name)
+
+  //   // NEED TO SEND AS FORMDATA
+  //   // {event.target.files[0]}
+
+
+  //   // User cancelled
+  //   if (!event.target.files[0]) {
+  //     return
+  //   }
+  // }
+
   // PREV & NEXT BUTTON
   // I want my prevStep method to also change the class of my fieldset to slideRight
   prevStep = () => {
@@ -84,28 +131,30 @@ class Form extends React.Component {
     this.setState({animationSide: "slideLeft"})
   }
 
-  // POST REQUEST
-  submitStep = () => {
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/',
-      data: {
-        contactPersonName: this.state.contactPersonName,
-        contactEmail: this.state.contactEmail,
-        employeeFirstName: this.state.employeeFirstName,
-        employeeLastName: this.state.employeeLastName,
-        employeePhoneNumber: this.state.employeePhoneNumber,
-        employeeAddress: this.state.employeeAddress,
-        employeeLanguage: this.state.employeeLanguage,
-        optimizedCheck: this.state.optimizedCheck,
-        atHome: this.state.atHome,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate,
-        commentDoctor: this.state.commentDoctor,
-        commentMedicheck: this.state.commentMedicheck,
-      },
-      config: { headers: {'Content-Type': 'application/json' }}
-    })
+  submitStep = (path, document, newName) => {
+    // const payload = {
+    //   contactPersonName: this.state.contactPersonName,
+    //   contactEmail: this.state.contactEmail,
+    //   employeeFirstName: this.state.employeeFirstName,
+    //   employeeLastName: this.state.employeeLastName,
+    //   employeePhoneNumber: this.state.employeePhoneNumber,
+    //   employeeAddress: this.state.employeeAddress,
+    //   employeeLanguage: this.state.employeeLanguage,
+    //   optimizedCheck: this.state.optimizedCheck,
+    //   atHome: this.state.atHome,
+    //   startDate: this.state.startDate,
+    //   endDate: this.state.endDate,
+    //   commentDoctor: this.state.commentDoctor,
+    //   commentMedicheck: this.state.commentMedicheck,
+    // }
+    const medicalCertificate = this.state.medicalCertificate
+
+    const formData = new FormData()
+    formData.append('medicalCertificate', medicalCertificate)
+    formData.append('contactPersonName', this.state.contactPersonName)
+    formData.append('contactEmail', this.state.contactEmail)
+    formData.append('employeeFirstName', this.state.employeeFirstName)
+    axios.post(`http://localhost:3000/`, formData)
     .then(function (response) {
       //handle success
       console.log(response);
@@ -114,7 +163,8 @@ class Form extends React.Component {
       //handle error
       console.log(response);
     });
-  }
+}
+
 
   render() {
     const { currentStep } = this.state
@@ -238,14 +288,17 @@ class Form extends React.Component {
                         onFocusChange={(focusedInput) => { 
                           // if (!focusedInput) return;
                           this.setState({ focusedInput })}}
-                        displayFormat="MMM D"
+                        displayFormat="MMM D, YYYY"
                       />
                     </div>
+
+{/* IMAGE UPLOADER */}
                     <div className="certificateImageUploader" >
-                    <label for="file-upload" class="custom-file-upload">
-                        Upload
-                    </label>
-                    <input id="file-upload" type="file"/>
+                      <input type="file" onChange={this.onImageChange.bind(this)} id="medicalCertificate"/>
+                      {/* <label htmlFor="medicalCertificate">Upload file</label> */}
+                    </div>
+                    <div className="imagePreview">
+                      <img src={this.state.preview} height="200" alt=""></img>
                     </div>
                   </div>
                 </fieldset>
