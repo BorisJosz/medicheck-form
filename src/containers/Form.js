@@ -65,8 +65,9 @@ class Form extends React.Component {
   handleCheck = event => {
     const target = event.target;
     const name = target.name
+    const value = target.value
     this.setState({
-      [name]: !this.value
+      [name]: !value
     });
   }
   // input handler
@@ -99,63 +100,64 @@ class Form extends React.Component {
     this.setState({animationSide: "slideLeft"})
   }
   submitStep = (path, document, newName) => {
-    let spokenLanguage;
-    if (this.state.employeeLanguage) {
-      spokenLanguage = "NL"
-    } else { 
-      spokenLanguage = "FR"
-    }
+    console.log(this.state.employeeLanguage)
+    // let spokenLanguage;
+    // if (this.state.employeeLanguage) {
+    //   spokenLanguage = "NL"
+    // } else { 
+    //   spokenLanguage = "FR"
+    // }
 
-    let optimizedCheckIf;
-    if (this.state.employeeLanguage) {
-      optimizedCheckIf = "Immediate Check"
-    } else { 
-      optimizedCheckIf = "Optimized Check"
-    }
+    // let optimizedCheckIf;
+    // if (this.state.employeeLanguage) {
+    //   optimizedCheckIf = "Immediate Check"
+    // } else { 
+    //   optimizedCheckIf = "Optimized Check"
+    // }
 
-    let checkLocation;
-    if (this.state.atHome) {
-      checkLocation = "At the employee's home"
-    } else { 
-      checkLocation = "At the doctor's cabinet"
-    }
+    // let checkLocation;
+    // if (this.state.atHome) {
+    //   checkLocation = "At the employee's home"
+    // } else { 
+    //   checkLocation = "At the doctor's cabinet"
+    // }
 
-    const payload = {
-      contactPersonName: this.state.contactPersonName,
-      contactEmail: this.state.contactEmail,
-      employeeFirstName: this.state.employeeFirstName,
-      employeeLastName: this.state.employeeLastName,
-      employeePhoneNumber: this.state.employeePhoneNumber,
-      employeeAddress: this.state.employeeAddress,
-      employeeLanguage: spokenLanguage,
-      optimizedCheck: optimizedCheckIf,
-      atHome: checkLocation,
-      startDate: moment(this.state.startDate).format("MMMM D, YYYY"),
-      endDate: moment(this.state.endDate).format("MMMM D, YYYY"),
-      commentDoctor: this.state.commentDoctor,
-      commentMedicheck: this.state.commentMedicheck,
-    }
-    const medicalCertificate = this.state.medicalCertificate
-    const formData = new FormData()
-    formData.append('medicalCertificate', medicalCertificate)
-    formData.append('payload', JSON.stringify(payload))
-    // axios.post(`http://localhost:3000/`, formData)
+    // const payload = {
+    //   contactPersonName: this.state.contactPersonName,
+    //   contactEmail: this.state.contactEmail,
+    //   employeeFirstName: this.state.employeeFirstName,
+    //   employeeLastName: this.state.employeeLastName,
+    //   employeePhoneNumber: this.state.employeePhoneNumber,
+    //   employeeAddress: this.state.employeeAddress,
+    //   employeeLanguage: spokenLanguage,
+    //   optimizedCheck: optimizedCheckIf,
+    //   atHome: checkLocation,
+    //   startDate: moment(this.state.startDate).format("MMMM D, YYYY"),
+    //   endDate: moment(this.state.endDate).format("MMMM D, YYYY"),
+    //   commentDoctor: this.state.commentDoctor,
+    //   commentMedicheck: this.state.commentMedicheck,
+    // }
+    // const medicalCertificate = this.state.medicalCertificate
+    // const formData = new FormData()
+    // formData.append('medicalCertificate', medicalCertificate)
+    // formData.append('payload', JSON.stringify(payload))
+    // // axios.post(`http://localhost:3000/`, formData)
     
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/',
-      data: formData,
-      config: { headers: {'Content-Type': 'multipart/form-data' }}
-    })
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:3000/',
+    //   data: formData,
+    //   config: { headers: {'Content-Type': 'multipart/form-data' }}
+    // })
       
-    .then(function (response) {
-      //handle success
-      console.log(response);
-    })
-    .catch(function (response) {
-      //handle error
-      console.log(response);
-    });
+    // .then(function (response) {
+    //   //handle success
+    //   console.log(response);
+    // })
+    // .catch(function (response) {
+    //   //handle error
+    //   console.log(response);
+    // });
   }
 
 
@@ -246,7 +248,7 @@ class Form extends React.Component {
 
                     <div className="toggle-1">
                       <label className="switch">
-                        <input onClick={this.toggleCssOptimized} name="optimizedCheck" type="checkbox" onClick={this.handleCheck} defaultChecked={this.state.optimizedCheck} value={this.state.optimizedCheck} />
+                        <input onClick={this.toggleCssOptimized} name="optimizedCheck" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.optimizedCheck} value={this.state.optimizedCheck} />
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -258,7 +260,7 @@ class Form extends React.Component {
                     
                     <div className="toggle-2">
                       <label className="switch">
-                        <input onClick={this.toggleCssHome} name="atHome" type="checkbox" onClick={this.handleCheck} defaultChecked={this.state.atHome} value={this.state.atHome} />
+                        <input onClick={this.toggleCssHome} name="atHome" type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.atHome} value={this.state.atHome} />
                         <div className="slider"></div>
                       </label>
                     </div>
