@@ -92,27 +92,11 @@ class Form extends React.Component {
     this.setState({animationSide: "slideLeft"})
   }
   submitStep = (path, document, newName) => {
-    console.log(this.state.employeeLanguage)
-    // let spokenLanguage;
-    // if (this.state.employeeLanguage) {
-    //   spokenLanguage = "NL"
-    // } else { 
-    //   spokenLanguage = "FR"
-    // }
-
-    // let optimizedCheckIf;
-    // if (this.state.employeeLanguage) {
-    //   optimizedCheckIf = "Immediate Check"
-    // } else { 
-    //   optimizedCheckIf = "Optimized Check"
-    // }
-
-    // let checkLocation;
-    // if (this.state.atHome) {
-    //   checkLocation = "At the employee's home"
-    // } else { 
-    //   checkLocation = "At the doctor's cabinet"
-    // }
+    // toggle statement conversions from true to FR
+    const spokenLanguage = this.state.employeeLanguage === false? "FR" : "NL"
+    const optimizedCheckIf = this.state.optimizedCheck === false? "Optimized Check" : "Immediate Check"
+    const checkLocation = this.state.atHome === false? "At the doctor's cabinet" : "At the employee's home"
+    
 
     // const payload = {
     //   contactPersonName: this.state.contactPersonName,
