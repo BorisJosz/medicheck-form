@@ -34,7 +34,7 @@ class Form extends React.Component {
       employeeLanguage: false,
       optimizedCheck: false,
       atHome: false,
-      medicalCertificate: null,
+      medicalCertificate: [],
       preview: null,
     };
   }
@@ -42,23 +42,24 @@ class Form extends React.Component {
 
   // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
-    let elementFr = document.getElementById("fr");
-    elementFr.classList.toggle("toggleActive");
-    let elementNl = document.getElementById("nl");
-    elementNl.classList.toggle("toggleActive");
+    let Fr = document.getElementById("fr");
+    this.state.employeeLanguage === true ? Fr.classList.add("toggleActive") : Fr.classList.remove("toggleActive");
+    let Nl = document.getElementById("nl");
+    this.state.employeeLanguage === true ? Nl.classList.remove("toggleActive") : Nl.classList.add("toggleActive");
   }
-  toggleCssOptimized = () => {
-    let elementOp = document.getElementById("optimized");
-    elementOp.classList.toggle("toggleActive");
-    let elementIm = document.getElementById("immediate");
-    elementIm.classList.toggle("toggleActive");
+  toggleCssCheckDetails = () => {
+    let Op = document.getElementById("optimized");
+    this.state.optimizedCheck === true ? Op.classList.add("toggleActive") : Op.classList.remove("toggleActive");
+    let Im = document.getElementById("immediate");
+    this.state.optimizedCheck === true ? Im.classList.remove("toggleActive") : Im.classList.add("toggleActive");
   }
-  toggleCssHome = () => {
-    let elementDo = document.getElementById("doctorsOffice");
-    elementDo.classList.toggle("toggleActive");
-    let elementAh = document.getElementById("atHome");
-    elementAh.classList.toggle("toggleActive");
+  toggleCssLocation = () => {
+    let Do = document.getElementById("doctorsOffice");
+    this.state.atHome === true ? Do.classList.add("toggleActive") : Do.classList.remove("toggleActive");
+    let Ah = document.getElementById("atHome");
+    this.state.atHome === true ? Ah.classList.remove("toggleActive") : Ah.classList.add("toggleActive");
   }
+
 
   // EVENT HANDLERS
   // input handler
@@ -69,11 +70,10 @@ class Form extends React.Component {
     this.setState({
       [name]: value
     });
-    console.log(event.target.checked)
   }
   // image handler
   onImageChange = event => {
-    this.setState({'medicalCertificate': event.target.files[0]})
+    this.setState({'medicalCertificate': event.target.files})
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (e) => {
@@ -97,43 +97,44 @@ class Form extends React.Component {
     const optimizedCheckIf = this.state.optimizedCheck === false? "Optimized Check" : "Immediate Check"
     const checkLocation = this.state.atHome === false? "At the doctor's cabinet" : "At the employee's home"
     
+    // saying what data to be sent to the server
+    const payload = {
+      contactPersonName: this.state.contactPersonName,
+      contactEmail: this.state.contactEmail,
+      employeeFirstName: this.state.employeeFirstName,
+      employeeLastName: this.state.employeeLastName,
+      employeePhoneNumber: this.state.employeePhoneNumber,
+      employeeAddress: this.state.employeeAddress,
+      employeeLanguage: spokenLanguage,
+      optimizedCheck: optimizedCheckIf,
+      atHome: checkLocation,
+      startDate: moment(this.state.startDate).format("MMMM D, YYYY"),
+      endDate: moment(this.state.endDate).format("MMMM D, YYYY"),
+      commentDoctor: this.state.commentDoctor,
+      commentMedicheck: this.state.commentMedicheck,
+    }
+    const medicalCertificate = this.state.medicalCertificate
+    const formData = new FormData()
+    formData.append('medicalCertificate', medicalCertificate[0])
+    formData.append('medicalCertificate', medicalCertificate[1])
+    formData.append('payload', JSON.stringify(payload))
 
-    // const payload = {
-    //   contactPersonName: this.state.contactPersonName,
-    //   contactEmail: this.state.contactEmail,
-    //   employeeFirstName: this.state.employeeFirstName,
-    //   employeeLastName: this.state.employeeLastName,
-    //   employeePhoneNumber: this.state.employeePhoneNumber,
-    //   employeeAddress: this.state.employeeAddress,
-    //   employeeLanguage: spokenLanguage,
-    //   optimizedCheck: optimizedCheckIf,
-    //   atHome: checkLocation,
-    //   startDate: moment(this.state.startDate).format("MMMM D, YYYY"),
-    //   endDate: moment(this.state.endDate).format("MMMM D, YYYY"),
-    //   commentDoctor: this.state.commentDoctor,
-    //   commentMedicheck: this.state.commentMedicheck,
-    // }
-    // const medicalCertificate = this.state.medicalCertificate
-    // const formData = new FormData()
-    // formData.append('medicalCertificate', medicalCertificate)
-    // formData.append('payload', JSON.stringify(payload))
-    // // axios.post(`http://localhost:3000/`, formData)
-    
-    // axios({
-    //   method: 'post',
-    //   url: 'http://localhost:3000/',
-    //   data: formData,
-    //   config: { headers: {'Content-Type': 'multipart/form-data' }}
-    // })
+    // post request with axios    
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/',
+      data: formData,
+      config: { headers: {'Content-Type': 'multipart/form-data' }}
+    })
       
-    // .then(function (response) {
-    //   //handle success
-    //   console.log(response);
-    // })
-    // .catch(function (response) {
-    //   //handle error
-    //   console.log(response);
-    // });
+    .then(function (response) {
+      //handle success
+      console.log(response);
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
   }
 
 
@@ -203,7 +204,7 @@ class Form extends React.Component {
                     {/* TOGGLE */}
                     <div className="toggleLanguage">
                       <label className="switch">
-                        <input name="employeeLanguage" type="checkbox" checked={this.state.employeeLanguage} onChange={this.handleInputChange}/>
+                        <input name="employeeLanguage" type="checkbox" checked={this.state.employeeLanguage} onChange={this.handleInputChange} onClick={this.toggleCssLanguage}/>
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -224,7 +225,7 @@ class Form extends React.Component {
 
                     <div className="toggle-1">
                       <label className="switch">
-                      <input name="optimizedCheck" type="checkbox" checked={this.state.optimizedCheck} onChange={this.handleInputChange}/>
+                      <input name="optimizedCheck" type="checkbox" checked={this.state.optimizedCheck} onChange={this.handleInputChange} onClick={this.toggleCssCheckDetails}/>
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -236,7 +237,7 @@ class Form extends React.Component {
                     
                     <div className="toggle-2">
                       <label className="switch">
-                      <input name="atHome" type="checkbox" checked={this.state.atHome} onChange={this.handleInputChange}/>
+                      <input name="atHome" type="checkbox" checked={this.state.atHome} onChange={this.handleInputChange} onClick={this.toggleCssLocation}/>
                         <div className="slider"></div>
                       </label>
                     </div>
@@ -265,11 +266,11 @@ class Form extends React.Component {
 
 {/* IMAGE UPLOADER */}
                     <div className="certificateImageUploader" >
-                      <input type="file" onChange={this.onImageChange.bind(this)} id="medicalCertificate"/>
+                      <input type="file" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       {/* <label htmlFor="medicalCertificate">Upload file</label> */}
                     </div>
                     <div className="imagePreview">
-                      <img src={this.state.preview} height="200" alt=""></img>
+                      <img src={this.state.preview} height="50" alt=""></img>
                     </div>
                   </div>
                 </fieldset>
