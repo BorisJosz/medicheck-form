@@ -230,8 +230,8 @@ class Form extends React.Component {
                     <div className="languageQuestion"> The employee speaks </div>
 
                     {/* Toggle options */}
-                    <div id="fr" className="languageQuestion fr toggleActive"> FR </div>
-                    <div id="nl" className="languageQuestion nl"> NL </div>
+                    <div id="fr" className={"languageQuestion fr " + (this.state.employeeLanguage ? '' : 'toggleActive')}> FR </div>
+                    <div id="nl" className={"languageQuestion nl " + (this.state.employeeLanguage ? 'toggleActive' : '')}> NL </div>
 
                     {/* TOGGLE */}
                     <div className="toggleLanguage">
@@ -250,9 +250,9 @@ class Form extends React.Component {
                     <h2 className="fs-title"> Check Details </h2>
 
                     {/* Toggle Options */}
-                      <div id="optimized" className="toggleTitles optimizedCheck toggleActive" title="Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work"> Optimized Check </div>
+                      <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} title="Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work"> Optimized Check </div>
                       {/* <div className="toggleDetailsText optimized"> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </div> */}
-                      <div id="immediate" className="toggleTitles immediateCheck" title="Allows for the check to happen in the shortest delays possible"> Immediate Check </div>
+                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')} title="Allows for the check to happen in the shortest delays possible"> Immediate Check </div>
                       {/* <div className="toggleDetailsText immediate"> Allows for the check to happen in the shortest delays possible </div> */}
 
                     <div className="toggle-1">
@@ -262,9 +262,9 @@ class Form extends React.Component {
                       </label>
                     </div>
 
-                    <div id="doctorsOffice" className="toggleTitles doctorsOffice toggleActive" title="We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in"> At the doctor's cabinet </div>
+                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')} title="We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in"> At the doctor's cabinet </div>
                     {/* <div className="toggleDetailsText doctor"> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordacne with the positive approach that your employer has chosen to partake in </div> */}
-                    <div id="atHome" className="toggleTitles atHome" title="Checks at home are recommended only in cases where the employee is required to stay home"> At the employee's home </div>
+                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')} title="Checks at home are recommended only in cases where the employee is required to stay home"> At the employee's home </div>
                     {/* <div className="toggleDetailsText home"> Checks at home are recommended only in cases where the employee is required to stay home </div> */}
                     
                     <div className="toggle-2">
