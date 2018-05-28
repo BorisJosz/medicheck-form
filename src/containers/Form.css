@@ -48,6 +48,7 @@
 
 input[type="file"] + label {
    /* your styles here */
+   opacity: 0
 }
 
 /*BACKGROUND*/

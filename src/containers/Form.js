@@ -35,6 +35,8 @@ class Form extends React.Component {
       optimizedCheck: false,
       atHome: false,
       medicalCertificate: [],
+      doctorImages: [],
+      medicheckImages: [],
       preview: null,
     };
   }
@@ -82,6 +84,26 @@ class Form extends React.Component {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+  // onDoctorImageChange = event => {
+  //   this.setState({'doctorImages': event.target.files})
+  //   if (event.target.files && event.target.files[0]) {
+  //     let doctorReader = new FileReader();
+  //     doctorReader.onload = (e) => {
+  //         this.setState({doctorPreview: e.target.result});
+  //     };
+  //     doctorReader.readAsDataURL(event.target.files[0]);
+  //   }
+  // }
+  // onMedicheckImageChange = event => {
+  //   this.setState({'medicheckImages': event.target.files})
+  //   if (event.target.files && event.target.files[0]) {
+  //     let medicheckReader = new FileReader();
+  //     medicheckReader.onload = (e) => {
+  //         this.setState({medicheckPreview: e.target.result});
+  //     };
+  //     medicheckReader.readAsDataURL(event.target.files[0]);
+  //   }
+  // }
   // button handlers
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
@@ -113,10 +135,20 @@ class Form extends React.Component {
       commentDoctor: this.state.commentDoctor,
       commentMedicheck: this.state.commentMedicheck,
     }
+
+    // IMAGES
     const medicalCertificate = this.state.medicalCertificate
+    const doctorImages = this.state.doctorImages
+    const medicheckImages = this.state.medicheckImages
+
     const formData = new FormData()
-    formData.append('medicalCertificate', medicalCertificate[0])
-    formData.append('medicalCertificate', medicalCertificate[1])
+  
+    let i
+    for (i = 0; i < 4; i++) {
+    formData.append('medicalCertificate', medicalCertificate[i])
+    // formData.append('doctorImages', doctorImages[i])
+    // formData.append('medicheckImages', medicheckImages[i])
+    }
     formData.append('payload', JSON.stringify(payload))
 
     // post request with axios    
@@ -285,12 +317,26 @@ class Form extends React.Component {
                       <textarea className="form-control" required name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentDoctor">Leave your comment for the doctor here..</label>
                     </div>
+                    {/* <div className="doctorImageUploader" >
+                      <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
+                      <label htmlFor="doctorImages">Upload file</label>
+                    </div>
+                    <div className="doctorImagePreview">
+                      <img src={this.state.doctorPreview} height="50" alt=""></img>
+                    </div> */}
                    
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
                       <textarea className="form-control" required name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentMedicheck">Leave your comment for Medicheck here..</label>
                     </div>
+                    {/* <div className="medicheckImageUploader" >
+                      <input type="file" onChange={this.onMedicheckImageChange.bind(this)} id="medicheckImages" multiple/>
+                      <label htmlFor="medicheckImages">Upload file</label> 
+                    </div>
+                    <div className="medicheckImagePreview">
+                      <img src={this.state.medicheckPreview} height="50" alt=""></img>
+                    </div> */}
                     
                     </div>
                 </fieldset>
