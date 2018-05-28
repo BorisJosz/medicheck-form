@@ -9,6 +9,7 @@
   
   transition: all 200ms;
   opacity: 0.5;
+  pointer-events: none;
 }
 
 .form-control:focus + .form-control-placeholder,
@@ -29,14 +30,3 @@
 textarea:focus, input:focus{
   outline: none;
 }
-
-
-/* <div class="form-group">
-  <input type="text" id="name" class="form-control" required>
-  <label class="form-control-placeholder" for="name">Name</label>
-</div>
-
-<div class="form-group">
-  <input type="password" id="password" class="form-control" required>
-  <label class="form-control-placeholder" for="password">Password</label>
-</div> */
