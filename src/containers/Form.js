@@ -13,6 +13,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
+import $ from 'jquery';
 
 class Form extends React.Component {
   constructor(props){
@@ -73,17 +74,24 @@ class Form extends React.Component {
       [name]: value
     });
   }
+
   // image handler
   onImageChange = event => {
     this.setState({'medicalCertificate': event.target.files})
+    
+
+    // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-          this.setState({preview: e.target.result});
-      };
-      reader.readAsDataURL(event.target.files[0]);
+      $(event.target.files).each(function () {
+          var reader = new FileReader();
+          reader.readAsDataURL(this);
+          reader.onload = function (e) {
+            $("#imagePreview").append("<img style='height:100px' class='thumb' src='" + e.target.result + "'></br>");
+          }
+      });
     }
   }
+ 
   // onDoctorImageChange = event => {
   //   this.setState({'doctorImages': event.target.files})
   //   if (event.target.files && event.target.files[0]) {
@@ -104,6 +112,7 @@ class Form extends React.Component {
   //     medicheckReader.readAsDataURL(event.target.files[0]);
   //   }
   // }
+
   // button handlers
   prevStep = () => {
     this.setState({currentStep: this.state.currentStep - 1});
@@ -298,11 +307,11 @@ class Form extends React.Component {
 
 {/* IMAGE UPLOADER */}
                     <div className="certificateImageUploader" >
-                      <input type="file" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
-                      {/* <label htmlFor="medicalCertificate">Upload file</label> */}
+                      <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
+                      <label htmlFor="medicalCertificate">Upload file</label>
                     </div>
-                    <div className="imagePreview">
-                      <img src={this.state.preview} height="50" alt=""></img>
+                    <div id="imagePreview" className="imagePreview">
+                      <img src={this.state.preview} height="100" alt=""></img>
                     </div>
                   </div>
                 </fieldset>
