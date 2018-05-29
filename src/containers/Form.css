@@ -16,14 +16,14 @@
 
 .DateRangePicker_picker {
   left: -180px !important;
-  z-index: 2 !important;
+  z-index: 5 !important;
 }
 
 
 /*CALENDAR*/
 .calendar {
   grid-column: 3 /span 6;
-  grid-row: 6;
+  grid-row: 7;
 }
 
 
@@ -35,7 +35,7 @@
   margin-left: -10px;
 }
 .moveUploader {
-  grid-column: 2 /span 4;
+  grid-row: 11;
 }
 
 .doctorImageUploader {
@@ -49,17 +49,19 @@
 }
 
 .imagePreview {
-  grid-column: 4 /span 4;
-  grid-row: 11;
-  width: 270px;
+  grid-column: 1 /span 10;
+  grid-row: 13;
   height: 150px;
+  width: 100%;
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  padding: 0px;
 }
 
 .imagePreview li {
   display: inline-block;
   padding: 0px 10px;
-  border: 2px solid #E62B4C,
 }
 
 .secondPreview {

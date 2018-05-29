@@ -87,7 +87,7 @@ class Form extends React.Component {
           var reader = new FileReader();
           reader.readAsDataURL(this);
           reader.onload = function (e) {
-            $("#imagePreview").append("<li><img class='thumb' style='height:150px' src='" + e.target.result + "'></br></li>");
+            $("#imagePreview").append("<li><img class='thumb' style='height:130px' src='" + e.target.result + "'></br></li>");
           }
       });
     }
