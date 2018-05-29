@@ -5,7 +5,7 @@
 
 .form-control-placeholder {
   position: absolute;
-  left: 0;
+  left: 5px;
   
   transition: all 200ms;
   opacity: 0.5;
