@@ -33,6 +33,16 @@
   grid-row: 14;
 }
 
+.doctorImageUploader {
+  grid-column: 2 /span 4;
+  grid-row: 10;
+}
+
+.medicheckImageUploader {
+  grid-column: 2 /span 4;
+  grid-row: 16;
+}
+
 .imagePreview {
   grid-column: 5 /span 4;
   grid-row: 13;
@@ -59,12 +69,14 @@ input[type="file"] + label {
   color: white;
   padding: 10px 20px;
   border-radius: 3px;
+}
 
+.otherImageUpload {
+  padding: 2px 5px !important;
 }
 
 input[type="file"] + label:hover {
   background-color: #BF1C3B;
-  font-weight: bolder;
 }
 
 /*BACKGROUND*/

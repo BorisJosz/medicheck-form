@@ -14,6 +14,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import $ from 'jquery';
+import { POINT_CONVERSION_COMPRESSED } from "constants";
 
 class Form extends React.Component {
   constructor(props){
@@ -92,26 +93,14 @@ class Form extends React.Component {
     }
   }
  
-  // onDoctorImageChange = event => {
-  //   this.setState({'doctorImages': event.target.files})
-  //   if (event.target.files && event.target.files[0]) {
-  //     let doctorReader = new FileReader();
-  //     doctorReader.onload = (e) => {
-  //         this.setState({doctorPreview: e.target.result});
-  //     };
-  //     doctorReader.readAsDataURL(event.target.files[0]);
-  //   }
-  // }
-  // onMedicheckImageChange = event => {
-  //   this.setState({'medicheckImages': event.target.files})
-  //   if (event.target.files && event.target.files[0]) {
-  //     let medicheckReader = new FileReader();
-  //     medicheckReader.onload = (e) => {
-  //         this.setState({medicheckPreview: e.target.result});
-  //     };
-  //     medicheckReader.readAsDataURL(event.target.files[0]);
-  //   }
-  // }
+  onDoctorImageChange = event => {
+    this.setState({'doctorImages': event.target.files})
+    
+  }
+  onMedicheckImageChange = event => {
+    this.setState({'medicheckImages': event.target.files})
+    
+  }
 
   // button handlers
   prevStep = () => {
@@ -151,12 +140,22 @@ class Form extends React.Component {
     const medicheckImages = this.state.medicheckImages
 
     const formData = new FormData()
-  
+
+    // let images = []
+    // images.push(medicalCertificate[0])
+
+    // formData.append('images', images)
+    // console.log(images)
+
+    // formData.append('medicalCertificate', medicalCertificate)
+    // formData.append('files', doctorImages)
+    // console.log(medicalCertificate)
+    // console.log(doctorImages)
     let i
     for (i = 0; i < 4; i++) {
     formData.append('medicalCertificate', medicalCertificate[i])
-    // formData.append('doctorImages', doctorImages[i])
-    // formData.append('medicheckImages', medicheckImages[i])
+    formData.append('doctorImages', doctorImages[i])
+    formData.append('medicheckImages', medicheckImages[i])
     }
     formData.append('payload', JSON.stringify(payload))
 
@@ -326,11 +325,11 @@ class Form extends React.Component {
                       <textarea className="form-control" required name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentDoctor">Leave your comment for the doctor here..</label>
                     </div>
-                    {/* <div className="doctorImageUploader" >
+                    <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
-                      <label htmlFor="doctorImages">Upload file</label>
+                      <label htmlFor="doctorImages" className="otherImageUpload" >Upload file</label>
                     </div>
-                    <div className="doctorImagePreview">
+                    {/* <div className="doctorImagePreview">
                       <img src={this.state.doctorPreview} height="50" alt=""></img>
                     </div> */}
                    
@@ -339,11 +338,11 @@ class Form extends React.Component {
                       <textarea className="form-control" required name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentMedicheck">Leave your comment for Medicheck here..</label>
                     </div>
-                    {/* <div className="medicheckImageUploader" >
+                    <div className="medicheckImageUploader" >
                       <input type="file" onChange={this.onMedicheckImageChange.bind(this)} id="medicheckImages" multiple/>
-                      <label htmlFor="medicheckImages">Upload file</label> 
+                      <label htmlFor="medicheckImages" className="otherImageUpload">Upload file</label> 
                     </div>
-                    <div className="medicheckImagePreview">
+                    {/* <div className="medicheckImagePreview">
                       <img src={this.state.medicheckPreview} height="50" alt=""></img>
                     </div> */}
                     
