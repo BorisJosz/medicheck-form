@@ -78,6 +78,8 @@ class Form extends React.Component {
   // image handler
   onImageChange = event => {
     this.setState({'medicalCertificate': event.target.files})
+    let Move = document.getElementById("certificateImageUploader")
+    Move.classList.add("moveUploader")
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
       $("#imagePreview").empty();
@@ -89,6 +91,7 @@ class Form extends React.Component {
           }
       });
     }
+   
   }
  
   onDoctorImageChange = event => {
@@ -289,9 +292,9 @@ class Form extends React.Component {
                     </div>
 
                     {/* IMAGE UPLOADER */}
-                    <div className="certificateImageUploader" >
+                    <div id="certificateImageUploader" className="certificateImageUploader" >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
-                      <label htmlFor="medicalCertificate">Upload file</label>
+                      <label htmlFor="medicalCertificate">Upload file(s)</label>
                     </div>
                     <ul id="imagePreview" className="imagePreview">
                     </ul>
@@ -310,7 +313,7 @@ class Form extends React.Component {
                     </div>
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
-                      <label htmlFor="doctorImages" className="otherImageUpload" >Upload file</label>
+                      <label htmlFor="doctorImages" className="otherImageUpload" >Upload file(s)</label>
                     </div>
                     {/* <div className="doctorImagePreview">
                       <img src={this.state.doctorPreview} height="50" alt=""></img>
@@ -323,7 +326,7 @@ class Form extends React.Component {
                     </div>
                     <div className="medicheckImageUploader" >
                       <input type="file" onChange={this.onMedicheckImageChange.bind(this)} id="medicheckImages" multiple/>
-                      <label htmlFor="medicheckImages" className="otherImageUpload">Upload file</label> 
+                      <label htmlFor="medicheckImages" className="otherImageUpload">Upload file(s)</label> 
                     </div>
                     {/* <div className="medicheckImagePreview">
                       <img src={this.state.medicheckPreview} height="50" alt=""></img>
