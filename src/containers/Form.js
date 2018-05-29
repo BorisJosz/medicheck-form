@@ -38,7 +38,7 @@ class Form extends React.Component {
       medicalCertificate: [],
       doctorImages: [],
       medicheckImages: [],
-      preview: null,
+      previews: null,
     };
   }
 
@@ -80,11 +80,12 @@ class Form extends React.Component {
     this.setState({'medicalCertificate': event.target.files})
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
+      $("#imagePreview").empty();
       $(event.target.files).each(function () {
           var reader = new FileReader();
           reader.readAsDataURL(this);
           reader.onload = function (e) {
-            $("#imagePreview").append("<img style='height:100px' class='thumb' src='" + e.target.result + "'></br>");
+            $("#imagePreview").append("<li><img class='thumb' style='height:150px' src='" + e.target.result + "'></br></li>");
           }
       });
     }
@@ -292,9 +293,8 @@ class Form extends React.Component {
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file</label>
                     </div>
-                    <div id="imagePreview" className="imagePreview">
-                      <img src={this.state.preview} height="100" alt=""></img>
-                    </div>
+                    <ul id="imagePreview" className="imagePreview">
+                    </ul>
                   </div>
                 </fieldset>
               }
