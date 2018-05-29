@@ -23,14 +23,14 @@
 /*CALENDAR*/
 .calendar {
   grid-column: 3 /span 6;
-  grid-row: 7;
+  grid-row: 6;
 }
 
 
 /* IMAGE UPLOAD */
 .certificateImageUploader {
   grid-column: 2 /span 4;
-  grid-row: 14;
+  grid-row: 13;
 }
 
 .doctorImageUploader {
@@ -44,12 +44,17 @@
 }
 
 .imagePreview {
-  grid-column: 5 /span 4;
-  grid-row: 13;
-  height: 150px;
+  grid-column: 4 /span 4;
+  grid-row: 12;
   width: 270px;
-  border: 1px solid #EA2143;
+  height: 150px;
   overflow-y: scroll;
+}
+
+.imagePreview li {
+  display: inline-block;
+  padding: 0px 10px;
+  border: 2px solid #E62B4C,
 }
 
 .secondPreview {
