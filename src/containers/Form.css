@@ -29,26 +29,42 @@
 
 /* IMAGE UPLOAD */
 .certificateImageUploader {
-  grid-column: 3 /span 4;
+  grid-column: 2 /span 4;
   grid-row: 14;
 }
 
 .imagePreview {
-  grid-column: 8 /span 4;
-  grid-row: 14;
+  grid-column: 5 /span 4;
+  grid-row: 13;
+  height: 150px;
+  width: 270px;
+  border: 1px solid #EA2143;
+  overflow-y: scroll;
 }
 
-/* input[type="file"] {
+.secondPreview {
+  padding-left: 100px;
+}
+
+input[type="file"] {
   opacity: 0;
   position: absolute;
   pointer-events: none;
   width: 1px;
   height: 1px;
-} */
+}
 
 input[type="file"] + label {
-   /* your styles here */
-   opacity: 0
+  background-color: #EA2243;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+
+}
+
+input[type="file"] + label:hover {
+  background-color: #BF1C3B;
+  font-weight: bolder;
 }
 
 /*BACKGROUND*/
