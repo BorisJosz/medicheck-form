@@ -14,7 +14,6 @@ import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import $ from 'jquery';
-import { POINT_CONVERSION_COMPRESSED } from "constants";
 
 class Form extends React.Component {
   constructor(props){
@@ -79,8 +78,6 @@ class Form extends React.Component {
   // image handler
   onImageChange = event => {
     this.setState({'medicalCertificate': event.target.files})
-    
-
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
       $(event.target.files).each(function () {
@@ -95,11 +92,9 @@ class Form extends React.Component {
  
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
-    
   }
   onMedicheckImageChange = event => {
     this.setState({'medicheckImages': event.target.files})
-    
   }
 
   // button handlers
@@ -134,29 +129,21 @@ class Form extends React.Component {
       commentMedicheck: this.state.commentMedicheck,
     }
 
-    // IMAGES
+    // setting usable variables to host images
     const medicalCertificate = this.state.medicalCertificate
     const doctorImages = this.state.doctorImages
     const medicheckImages = this.state.medicheckImages
 
+    // initializing formData to fill with images + payload
     const formData = new FormData()
-
-    // let images = []
-    // images.push(medicalCertificate[0])
-
-    // formData.append('images', images)
-    // console.log(images)
-
-    // formData.append('medicalCertificate', medicalCertificate)
-    // formData.append('files', doctorImages)
-    // console.log(medicalCertificate)
-    // console.log(doctorImages)
+    // image append
     let i
     for (i = 0; i < 4; i++) {
     formData.append('medicalCertificate', medicalCertificate[i])
     formData.append('doctorImages', doctorImages[i])
     formData.append('medicheckImages', medicheckImages[i])
     }
+    // all other input append...
     formData.append('payload', JSON.stringify(payload))
 
     // post request with axios    
@@ -259,9 +246,7 @@ class Form extends React.Component {
 
                     {/* Toggle Options */}
                       <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} title="Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work"> Optimized Check </div>
-                      {/* <div className="toggleDetailsText optimized"> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </div> */}
                       <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')} title="Allows for the check to happen in the shortest delays possible"> Immediate Check </div>
-                      {/* <div className="toggleDetailsText immediate"> Allows for the check to happen in the shortest delays possible </div> */}
 
                     <div className="toggle-1">
                       <label className="switch">
@@ -271,9 +256,7 @@ class Form extends React.Component {
                     </div>
 
                     <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')} title="We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in"> At the doctor's cabinet </div>
-                    {/* <div className="toggleDetailsText doctor"> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordacne with the positive approach that your employer has chosen to partake in </div> */}
                     <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')} title="Checks at home are recommended only in cases where the employee is required to stay home"> At the employee's home </div>
-                    {/* <div className="toggleDetailsText home"> Checks at home are recommended only in cases where the employee is required to stay home </div> */}
                     
                     <div className="toggle-2">
                       <label className="switch">
@@ -304,7 +287,7 @@ class Form extends React.Component {
                       />
                     </div>
 
-{/* IMAGE UPLOADER */}
+                    {/* IMAGE UPLOADER */}
                     <div className="certificateImageUploader" >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file</label>
