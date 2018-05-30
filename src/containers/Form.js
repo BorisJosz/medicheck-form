@@ -22,8 +22,10 @@ class Form extends React.Component {
       currentStep: 1,
       numberOfStep: 5,
       animationSide: "slideLeft",
-      contactPersonName: "",
+      contactPersonFirstName: "",
+      contactPersonLastName: "",
       contactEmail: "",
+      contactPhoneNumber: "",
       employeeFirstName: "",
       employeeLastName: "",
       employeePhoneNumber: "",
@@ -41,6 +43,8 @@ class Form extends React.Component {
       previews: null,
     };
   }
+
+  // DROPDOWN
 
 
   // TOGGLE CSS FUNCTIONS
@@ -80,6 +84,8 @@ class Form extends React.Component {
     this.setState({'medicalCertificate': event.target.files})
     let Move = document.getElementById("certificateImageUploader")
     Move.classList.add("moveUploader")
+    let Disable = document.getElementById("medicalCertificateTitle")
+    Disable.classList.add("disable")
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
       $("#imagePreview").empty();
@@ -118,8 +124,10 @@ class Form extends React.Component {
     
     // saying what data to be sent to the server
     const payload = {
-      contactPersonName: this.state.contactPersonName,
+      contactPersonFirstName: this.state.contactPersonFirstName,
+      contactPersonLastName: this.state.contactPersonLastName,
       contactEmail: this.state.contactEmail,
+      contactPhoneNumber: this.state.contactPhoneNumber,
       employeeFirstName: this.state.employeeFirstName,
       employeeLastName: this.state.employeeLastName,
       employeePhoneNumber: this.state.employeePhoneNumber,
@@ -179,22 +187,33 @@ class Form extends React.Component {
             <div className="formText title"> Launch a Check </div>
 
             <form id="msform">
+{/* SLIDE 1 */}
               {currentStep === 1 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Company Information </h2>
                     
-                    <div className="form-group" id="contactPersonName">
-                      <input className="form-control" required name="contactPersonName" type="text" value={this.state.contactPersonName} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactPersonName">Contact Person's name</label>
+                   
+                    <div className="form-group" id="contactPersonFirstName">
+                      <input className="form-control" required name="contactPersonFirstName" type="text" value={this.state.contactPersonFirstName} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="contactPersonFirstName">First Name</label>
+                    </div>
+                    <div className="form-group" id="contactPersonLastName">
+                      <input className="form-control" required name="contactPersonLastName" type="text" value={this.state.contactPersonLastName} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="contactPersonLastName">Last Name</label>
                     </div>
                     <div className="form-group" id="contactEmail">
                       <input className="form-control" required name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="contactEmail">Email address</label>
                     </div>
+                    <div className="form-group" id="contactPhoneNumber">
+                      <input className="form-control" required name="contactPhoneNumber" type="text" value={this.state.contactPhoneNumber} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Phone Number</label>
+                    </div>
                   </div>
                 </fieldset>
               }
+{/* SLIDE 2 */}
               {currentStep === 2 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
@@ -243,13 +262,17 @@ class Form extends React.Component {
                   </div>
                 </fieldset>
               }
+{/* SLIDE 3 */}
               {currentStep === 3 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Check Details </h2>
 
                     {/* Toggle Options */}
-                      <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} title="Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work"> Optimized Check </div>
+
+                      <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Optimized Check </div>
+                      
+                    
                       <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')} title="Allows for the check to happen in the shortest delays possible"> Immediate Check </div>
 
                     <div className="toggle-1">
@@ -272,10 +295,15 @@ class Form extends React.Component {
                   </div>
                 </fieldset>
               }
+{/* SLIDE 4 */}
               {currentStep === 4 &&
+                
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
                     <h2 className="fs-title"> Incapacity Period </h2>
+                    <div className="calendarTitle"> 
+                      <p> Insert the start and end date of the work incapacity </p>
+                    </div>
                     <div className="calendar">
                       <DateRangePicker 
                         startDateId="startDate"
@@ -292,6 +320,9 @@ class Form extends React.Component {
                     </div>
 
                     {/* IMAGE UPLOADER */}
+                    <div id="medicalCertificateTitle" >
+                      <p> If available, upload a copy of the medical certificate here </p>
+                    </div>
                     <div id="certificateImageUploader" className="certificateImageUploader" >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file(s)</label>
@@ -301,6 +332,7 @@ class Form extends React.Component {
                   </div>
                 </fieldset>
               }
+{/* SLIDE 5 */}
               {currentStep === 5 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
@@ -337,8 +369,7 @@ class Form extends React.Component {
               }
             </form>
 
-            {/* BUTTONS */}
-
+{/* BUTTONS */}
             {currentStep === 1 &&
               <div className="button-placement">
                 <button className="next action-button" onClick={this.nextStep}> Next </button>
