@@ -66,6 +66,8 @@ class Form extends React.Component {
     this.state.optimizedCheck === true ? Op.classList.add("toggleActive") : Op.classList.remove("toggleActive");
     let Im = document.getElementById("immediate");
     this.state.optimizedCheck === true ? Im.classList.remove("toggleActive") : Im.classList.add("toggleActive");
+    let immediateIcon = document.getElementById("immediateIcon");
+    immediateIcon.classList.toggle("toggleActive")
   }
   toggleCssLocation = () => {
     let Do = document.getElementById("doctorsOffice");
@@ -279,18 +281,18 @@ class Form extends React.Component {
 
                       <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Optimized Check </div>
                       <div id="optimizedDropdown">
-                        <img onClick={this.toggleDropdownOptimized} className="optimizedInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img>
+                        {/* <img onClick={this.toggleDropdownOptimized} className="optimizedInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img> */}
                         {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
-                        <div id="optimizedDropdownContent" className="dropDownBackground disable">
+                        <div id="optimizedDropdownContent" className="dropDownBackground leftNudge disable">
                           <p> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </p>
                         </div>
                       </div>
                     
                       <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Immediate Check </div>
                       <div id="immediateDropdown">
-                        <img onClick={this.toggleDropdownImmediate} className="immediateInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img>
-                        {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
-                        <div id="immediateDropdownContent" className="dropDownBackground disable">
+                        {/* <img onClick={this.toggleDropdownImmediate} className="immediateInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img> */}
+                        <i id="immediateIcon" className="fas fa-info" onClick={this.toggleDropdownImmediate}></i>
+                        <div id="immediateDropdownContent" className="dropDownBackground rightNudge disable">
                           <p> Allows for the check to happen in the shortest delays possible</p>
                         </div>
                       </div>
