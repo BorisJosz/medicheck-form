@@ -53,6 +53,14 @@ class Form extends React.Component {
     let immediateDropdown = document.getElementById("immediateDropdownContent");
     immediateDropdown.classList.toggle("disable")
   }
+  toggleDropdownDoctor = () => {
+    let doctorDropdown = document.getElementById("doctorDropdownContent");
+    doctorDropdown.classList.toggle("disable")
+  }
+  toggleDropdownAtHome = () => {
+    let atHomeDropdown = document.getElementById("atHomeDropdownContent");
+    atHomeDropdown.classList.toggle("disable")
+  }
 
   // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
@@ -66,6 +74,8 @@ class Form extends React.Component {
     this.state.optimizedCheck === true ? Op.classList.add("toggleActive") : Op.classList.remove("toggleActive");
     let Im = document.getElementById("immediate");
     this.state.optimizedCheck === true ? Im.classList.remove("toggleActive") : Im.classList.add("toggleActive");
+    let immediateIcon = document.getElementById("immediateIcon");
+    this.state.optimizedCheck === true? immediateIcon.classList.remove("toggleActive") : immediateIcon.classList.add("toggleActive")
   }
   toggleCssLocation = () => {
     let Do = document.getElementById("doctorsOffice");
@@ -109,7 +119,17 @@ class Form extends React.Component {
  
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
+    if (event.target.files && event.target.files[0]) {
+      $("#doctorPreview").empty();
+      $(event.target.files).each(function () {
+        console.log(event.target.files[0].name)
+        $("#doctorPreview").append("<li><p> "+ event.target.files[0].name +"</p></li>");
+        }
+      );
+    }
   }
+
+  
   onMedicheckImageChange = event => {
     this.setState({'medicheckImages': event.target.files})
   }
@@ -279,18 +299,16 @@ class Form extends React.Component {
 
                       <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Optimized Check </div>
                       <div id="optimizedDropdown">
-                        <img onClick={this.toggleDropdownOptimized} className="optimizedInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img>
-                        {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
-                        <div id="optimizedDropdownContent" className="dropDownBackground disable">
+                      <i id="optimizedIcon" className={"fas fa-info " + (this.state.optimizedCheck ? '' : 'toggleActive')} onClick={this.toggleDropdownOptimized}></i>
+                        <div id="optimizedDropdownContent" className="dropDownBackground leftNudge disable">
                           <p> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </p>
                         </div>
                       </div>
                     
                       <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Immediate Check </div>
                       <div id="immediateDropdown">
-                        <img onClick={this.toggleDropdownImmediate} className="immediateInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img>
-                        {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
-                        <div id="immediateDropdownContent" className="dropDownBackground disable">
+                        <i id="immediateIcon" className={"fas fa-info " + (this.state.optimizedCheck ? 'toggleActive' : '')} onClick={this.toggleDropdownImmediate}></i>
+                        <div id="immediateDropdownContent" className="dropDownBackground rightNudge disable ">
                           <p> Allows for the check to happen in the shortest delays possible</p>
                         </div>
                       </div>
@@ -302,9 +320,23 @@ class Form extends React.Component {
                       </label>
                     </div>
 
-                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')} title="We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in"> At the doctor's cabinet </div>
-                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')} title="Checks at home are recommended only in cases where the employee is required to stay home"> At the employee's home </div>
+                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')}> At the doctor's cabinet </div>
+                    <div id="doctorDropdown">
+                      <i id="doctorIcon" className={"fas fa-info " + (this.state.atHome ? '' : 'toggleActive')} onClick={this.toggleDropdownDoctor}></i>
+                        <div id="doctorDropdownContent" className="dropDownBackground leftNudge disable">
+                          <p> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in </p>
+                        </div>
+                      </div>
                     
+                    
+                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')}> At the employee's home </div>
+                    <div id="atHomeDropdown">
+                        <i id="atHomeIcon" className={"fas fa-info " + (this.state.atHome ? 'toggleActive' : '')} onClick={this.toggleDropdownAtHome}></i>
+                        <div id="atHomeDropdownContent" className="dropDownBackground rightNudge disable ">
+                          <p> Checks at home are recommended only in cases where the employee is required to stay home </p>
+                        </div>
+                      </div>
+
                     <div className="toggle-2">
                       <label className="switch">
                       <input name="atHome" type="checkbox" checked={this.state.atHome} onChange={this.handleInputChange} onClick={this.toggleCssLocation}/>
@@ -347,8 +379,7 @@ class Form extends React.Component {
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file(s)</label>
                     </div>
-                    <ul id="imagePreview" className="imagePreview">
-                    </ul>
+                      <ul id="imagePreview" className="imagePreview"></ul>
                   </div>
                 </fieldset>
               }
@@ -366,10 +397,10 @@ class Form extends React.Component {
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
                       <label htmlFor="doctorImages" className="otherImageUpload" >Upload file(s)</label>
+                      <div className="doctorImagePreview">
+                        <ul id="doctorPreview" className="doctorPreview"></ul>
+                      </div>
                     </div>
-                    {/* <div className="doctorImagePreview">
-                      <img src={this.state.doctorPreview} height="50" alt=""></img>
-                    </div> */}
                    
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">

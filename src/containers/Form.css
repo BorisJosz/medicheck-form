@@ -1,28 +1,7 @@
-.arrow-right {
-  width: 0; 
-  height: 0; 
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-
-  border-left: 6px solid #E62B4C;
-
-  grid-column: 5 /span 4;
-  grid-row: 8;
-  margin-top: 5px;
-  cursor: pointer;
-}
-.arrow-down {
-  width: 0; 
-  height: 0; 
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-
-  border-top: 6px solid #E62B4C;  
-}
-
 p {
   font-family: 'Roboto', sans-serif;
 }
+
 /* DROPDOWN STYLING */
 #optimizedDropdown {
   grid-column: 5 /span 4;
@@ -31,9 +10,29 @@ p {
 }
 
 #immediateDropdown {
+  grid-column: 6 /span 4;
+  grid-row: 8;
+  margin-left: 30px;
+}
+
+#doctorDropdown {
   grid-column: 5 /span 4;
   grid-row: 14;
   margin-left: 10px;
+}
+
+#atHomeDropdown {
+  grid-column: 6 /span 4;
+  grid-row: 14;
+  margin-left: 30px;
+}
+
+#immediateIcon, #optimizedIcon, #doctorIcon, #atHomeIcon {
+  color: #737573;
+  font-size: 15px;
+  padding-bottom: 3px;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .dropDownBackground {
@@ -42,7 +41,12 @@ p {
   z-index: 5;
   border-radius: 3px;
   width: 200px;
+}
+.leftNudge {
   margin-left: -200px;
+}
+.rightNudge {
+  margin-left: 20px;
 }
 
 .dropDownBackground p {
@@ -51,14 +55,6 @@ p {
   padding: 10px 10px;
 
 }
-
-.infoIcon {
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-}
-
-
 
 /* DATE RANGE PICKER */
 .DateRangePickerInput__withBorder {
