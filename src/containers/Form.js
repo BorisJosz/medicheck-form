@@ -133,11 +133,10 @@ class Form extends React.Component {
     this.setState({'medicheckImages': event.target.files})
     if (event.target.files && event.target.files[0]) {
       $("#medicheckPreview").empty();
-      $(event.target.files).each(function () {
-        console.log(event.target.files[0].name)
-        $("#medicheckPreview").append("<li><p> "+ event.target.files[0].name +"</p></li>");
-        }
-      );
+      let i
+      for (i = 0; i < event.target.files.length; i++) {
+        $("#medicheckPreview").append("<li><p> "+ event.target.files[i].name +"</p></li>")  
+      }
     }
   }
 
