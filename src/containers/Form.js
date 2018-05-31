@@ -67,7 +67,7 @@ class Form extends React.Component {
     let Im = document.getElementById("immediate");
     this.state.optimizedCheck === true ? Im.classList.remove("toggleActive") : Im.classList.add("toggleActive");
     let immediateIcon = document.getElementById("immediateIcon");
-    immediateIcon.classList.toggle("toggleActive")
+    this.state.optimizedCheck === true? immediateIcon.classList.remove("toggleActive") : immediateIcon.classList.add("toggleActive")
   }
   toggleCssLocation = () => {
     let Do = document.getElementById("doctorsOffice");
@@ -291,8 +291,8 @@ class Form extends React.Component {
                       <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Immediate Check </div>
                       <div id="immediateDropdown">
                         {/* <img onClick={this.toggleDropdownImmediate} className="immediateInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img> */}
-                        <i id="immediateIcon" className="fas fa-info" onClick={this.toggleDropdownImmediate}></i>
-                        <div id="immediateDropdownContent" className="dropDownBackground rightNudge disable">
+                        <i id="immediateIcon" className={"fas fa-info " + (this.state.optimizedCheck ? 'toggleActive' : '')} onClick={this.toggleDropdownImmediate}></i>
+                        <div id="immediateDropdownContent" className="dropDownBackground rightNudge disable ">
                           <p> Allows for the check to happen in the shortest delays possible</p>
                         </div>
                       </div>
