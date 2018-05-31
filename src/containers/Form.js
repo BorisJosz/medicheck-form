@@ -45,7 +45,14 @@ class Form extends React.Component {
   }
 
   // DROPDOWN
-
+  toggleDropdownOptimized = () => {
+    let optimizedDropdown = document.getElementById("optimizedDropdownContent");
+    optimizedDropdown.classList.toggle("disable")
+  }
+  toggleDropdownImmediate = () => {
+    let immediateDropdown = document.getElementById("immediateDropdownContent");
+    immediateDropdown.classList.toggle("disable")
+  }
 
   // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
@@ -271,9 +278,22 @@ class Form extends React.Component {
                     {/* Toggle Options */}
 
                       <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Optimized Check </div>
-                      
+                      <div id="optimizedDropdown">
+                        <img onClick={this.toggleDropdownOptimized} className="optimizedInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img>
+                        {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
+                        <div id="optimizedDropdownContent" className="dropDownBackground disable">
+                          <p> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </p>
+                        </div>
+                      </div>
                     
-                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')} title="Allows for the check to happen in the shortest delays possible"> Immediate Check </div>
+                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Immediate Check </div>
+                      <div id="immediateDropdown">
+                        <img onClick={this.toggleDropdownImmediate} className="immediateInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img>
+                        {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
+                        <div id="immediateDropdownContent" className="dropDownBackground disable">
+                          <p> Allows for the check to happen in the shortest delays possible</p>
+                        </div>
+                      </div>
 
                     <div className="toggle-1">
                       <label className="switch">
