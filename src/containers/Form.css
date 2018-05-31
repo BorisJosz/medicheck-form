@@ -179,6 +179,28 @@ input[type="file"] + label:hover {
   background-color: #BF1C3B;
 }
 
+/* FILE NAME PREVIEW CSS */
+.doctorImagePreview {
+  grid-column: 3 /span 6;
+  grid-row: 10;
+  overflow: scroll;
+  height: 50px;
+}
+
+#doctorPreview, #medicheckPreview {
+  font-family: 'Roboto', sans-serif;
+  color: #737573;
+  font-size: 10px;
+  list-style: none;
+}
+
+.medicheckImagePreview {
+  grid-column: 3 /span 6;
+  grid-row: 15;
+  overflow: scroll;
+  height: 50px;
+}
+
 /*BACKGROUND*/
 /*PAGE*/
 .container {

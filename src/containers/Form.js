@@ -121,17 +121,24 @@ class Form extends React.Component {
     this.setState({'doctorImages': event.target.files})
     if (event.target.files && event.target.files[0]) {
       $("#doctorPreview").empty();
-      $(event.target.files).each(function () {
-        console.log(event.target.files[0].name)
-        $("#doctorPreview").append("<li><p> "+ event.target.files[0].name +"</p></li>");
-        }
-      );
+      let i
+      for (i = 0; i < event.target.files.length; i++) {
+        $("#doctorPreview").append("<li><p> "+ event.target.files[i].name +"</p></li>")  
+      }
     }
   }
 
   
   onMedicheckImageChange = event => {
     this.setState({'medicheckImages': event.target.files})
+    if (event.target.files && event.target.files[0]) {
+      $("#medicheckPreview").empty();
+      $(event.target.files).each(function () {
+        console.log(event.target.files[0].name)
+        $("#medicheckPreview").append("<li><p> "+ event.target.files[0].name +"</p></li>");
+        }
+      );
+    }
   }
 
   // button handlers
@@ -397,11 +404,11 @@ class Form extends React.Component {
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
                       <label htmlFor="doctorImages" className="otherImageUpload" >Upload file(s)</label>
-                      <div className="doctorImagePreview">
-                        <ul id="doctorPreview" className="doctorPreview"></ul>
-                      </div>
                     </div>
-                   
+                    <div className="doctorImagePreview">
+                        <ul id="doctorPreview" className="doctorPreview"></ul>
+                    </div>
+
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
                       <textarea className="form-control" required name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
@@ -411,9 +418,9 @@ class Form extends React.Component {
                       <input type="file" onChange={this.onMedicheckImageChange.bind(this)} id="medicheckImages" multiple/>
                       <label htmlFor="medicheckImages" className="otherImageUpload">Upload file(s)</label> 
                     </div>
-                    {/* <div className="medicheckImagePreview">
-                      <img src={this.state.medicheckPreview} height="50" alt=""></img>
-                    </div> */}
+                    <div className="medicheckImagePreview">
+                        <ul id="medicheckPreview" className="doctorPreview"></ul>
+                    </div>
                     
                     </div>
                 </fieldset>
