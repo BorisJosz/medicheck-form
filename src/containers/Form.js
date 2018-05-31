@@ -53,6 +53,14 @@ class Form extends React.Component {
     let immediateDropdown = document.getElementById("immediateDropdownContent");
     immediateDropdown.classList.toggle("disable")
   }
+  toggleDropdownDoctor = () => {
+    let doctorDropdown = document.getElementById("doctorDropdownContent");
+    doctorDropdown.classList.toggle("disable")
+  }
+  toggleDropdownAtHome = () => {
+    let atHomeDropdown = document.getElementById("atHomeDropdownContent");
+    atHomeDropdown.classList.toggle("disable")
+  }
 
   // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
@@ -281,8 +289,7 @@ class Form extends React.Component {
 
                       <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Optimized Check </div>
                       <div id="optimizedDropdown">
-                        {/* <img onClick={this.toggleDropdownOptimized} className="optimizedInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img> */}
-                        {/* <div className="arrow-right optimizedInfo" onClick={this.toggleDropdown}></div> */}
+                      <i id="optimizedIcon" className={"fas fa-info " + (this.state.optimizedCheck ? '' : 'toggleActive')} onClick={this.toggleDropdownOptimized}></i>
                         <div id="optimizedDropdownContent" className="dropDownBackground leftNudge disable">
                           <p> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </p>
                         </div>
@@ -290,7 +297,6 @@ class Form extends React.Component {
                     
                       <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Immediate Check </div>
                       <div id="immediateDropdown">
-                        {/* <img onClick={this.toggleDropdownImmediate} className="immediateInfo infoIcon"  src={ require('../images/Info.jpg') } alt=""></img> */}
                         <i id="immediateIcon" className={"fas fa-info " + (this.state.optimizedCheck ? 'toggleActive' : '')} onClick={this.toggleDropdownImmediate}></i>
                         <div id="immediateDropdownContent" className="dropDownBackground rightNudge disable ">
                           <p> Allows for the check to happen in the shortest delays possible</p>
@@ -304,9 +310,23 @@ class Form extends React.Component {
                       </label>
                     </div>
 
-                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')} title="We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in"> At the doctor's cabinet </div>
-                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')} title="Checks at home are recommended only in cases where the employee is required to stay home"> At the employee's home </div>
+                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')}> At the doctor's cabinet </div>
+                    <div id="doctorDropdown">
+                      <i id="doctorIcon" className={"fas fa-info " + (this.state.atHome ? '' : 'toggleActive')} onClick={this.toggleDropdownDoctor}></i>
+                        <div id="doctorDropdownContent" className="dropDownBackground leftNudge disable">
+                          <p> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in </p>
+                        </div>
+                      </div>
                     
+                    
+                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')}> At the employee's home </div>
+                    <div id="atHomeDropdown">
+                        <i id="atHomeIcon" className={"fas fa-info " + (this.state.atHome ? 'toggleActive' : '')} onClick={this.toggleDropdownAtHome}></i>
+                        <div id="atHomeDropdownContent" className="dropDownBackground rightNudge disable ">
+                          <p> Checks at home are recommended only in cases where the employee is required to stay home </p>
+                        </div>
+                      </div>
+
                     <div className="toggle-2">
                       <label className="switch">
                       <input name="atHome" type="checkbox" checked={this.state.atHome} onChange={this.handleInputChange} onClick={this.toggleCssLocation}/>

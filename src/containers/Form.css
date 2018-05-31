@@ -36,7 +36,19 @@ p {
   margin-left: 30px;
 }
 
-#immediateIcon {
+#doctorDropdown {
+  grid-column: 5 /span 4;
+  grid-row: 14;
+  margin-left: 10px;
+}
+
+#atHomeDropdown {
+  grid-column: 6 /span 4;
+  grid-row: 14;
+  margin-left: 30px;
+}
+
+#immediateIcon, #optimizedIcon, #doctorIcon, #atHomeIcon {
   color: #737573;
   font-size: 15px;
   padding-bottom: 3px;
