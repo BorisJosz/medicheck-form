@@ -119,7 +119,17 @@ class Form extends React.Component {
  
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
+    if (event.target.files && event.target.files[0]) {
+      $("#doctorPreview").empty();
+      $(event.target.files).each(function () {
+        console.log(event.target.files[0].name)
+        $("#doctorPreview").append("<li><p> "+ event.target.files[0].name +"</p></li>");
+        }
+      );
+    }
   }
+
+  
   onMedicheckImageChange = event => {
     this.setState({'medicheckImages': event.target.files})
   }
@@ -369,8 +379,7 @@ class Form extends React.Component {
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file(s)</label>
                     </div>
-                    <ul id="imagePreview" className="imagePreview">
-                    </ul>
+                      <ul id="imagePreview" className="imagePreview"></ul>
                   </div>
                 </fieldset>
               }
@@ -388,10 +397,10 @@ class Form extends React.Component {
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
                       <label htmlFor="doctorImages" className="otherImageUpload" >Upload file(s)</label>
+                      <div className="doctorImagePreview">
+                        <ul id="doctorPreview" className="doctorPreview"></ul>
+                      </div>
                     </div>
-                    {/* <div className="doctorImagePreview">
-                      <img src={this.state.doctorPreview} height="50" alt=""></img>
-                    </div> */}
                    
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
