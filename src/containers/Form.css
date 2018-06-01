@@ -215,7 +215,7 @@ input[type="file"] + label:hover {
 
 /*FORM BACKGROUND*/
 .form-background {
-  height: 90vh;
+  height: 700px;
   width: 600px;
   background-color: #EA2143;
   position: absolute;
@@ -451,6 +451,16 @@ fieldset .completeFormTitle {
   grid-row: 17;
   margin-top: 30px;
 }
+
+.interactiveStepper {
+  grid-column: 5 / span 4;
+  grid-row: 17;
+}
+
+.interactiveStepper button {
+  background-color: blue;
+}
+
 
 #progressbar li {
   list-style-type: none;

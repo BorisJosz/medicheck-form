@@ -1,3 +1,4 @@
+/*global google*/
 import React from "react";
 
 // other file imports
@@ -43,6 +44,7 @@ class Form extends React.Component {
       previews: null,
     };
   }
+  
 
   // DROPDOWN
   toggleDropdownOptimized = () => {
@@ -116,7 +118,6 @@ class Form extends React.Component {
     }
    
   }
- 
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
     if (event.target.files && event.target.files[0]) {
@@ -127,8 +128,6 @@ class Form extends React.Component {
       }
     }
   }
-
-  
   onMedicheckImageChange = event => {
     this.setState({'medicheckImages': event.target.files})
     if (event.target.files && event.target.files[0]) {
@@ -211,9 +210,15 @@ class Form extends React.Component {
     this.setState({currentStep: this.state.currentStep + 1});
   }
 
-
   render() {
     const { currentStep } = this.state
+    
+    // GOOGLE MAPS AUTOCOMPLETE ADDRESS
+    const autocompleteFormField = document.getElementById("street-address-field");
+    const autocomplete = new google.maps.places.Autocomplete((autocompleteFormField), {
+      types: ['address'],
+      componentRestrictions: {country: 'be'},
+    });
 
     return (
       <div className="container">
@@ -274,8 +279,9 @@ class Form extends React.Component {
                     </div>
 
                     {/* EMPLOYEE ADDRESS */}
+
                     <div className="form-group" id="employeeAddress">
-                      <input className="form-control" required name="employeeAddress" type="text" value={this.state.employeeAddress} onChange={this.handleInputChange} />
+                      <input id="street-address-field" className="form-control" required name="employeeAddress" type="text" value={this.state.employeeAddress} onChange={this.handleInputChange} placeholder="" />
                       <label className="form-control-placeholder" htmlFor="employeeAddress">Street Address</label>
                     </div>
                     
@@ -465,12 +471,13 @@ class Form extends React.Component {
 
             {/* progressbar */}
             <Stepper currentStep={currentStep} numberOfStep={this.state.numberOfStep}/>
-
+            
             </div>
           </div>
         <div className="image-container">
           <img alt="Website background" src={'http://res.cloudinary.com/borisj/image/upload/v1526232024/Medicheck/MedicheckFormBackground.png'} className="background-image"/>
         </div>
+
       </div>
     )
   }
