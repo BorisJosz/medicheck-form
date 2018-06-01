@@ -464,7 +464,7 @@ class Form extends React.Component {
                 {currentStep === 6 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and scheduled </h2>
+                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and sent to our team at Medicheck </h2>
                     <img alt="" className="vCheck" src={require('../images/Vcheck.png')} />
                     <h3 className="confirmationText"> A confirmation mail has been sent to {this.state.contactEmail} </h3>
                     
