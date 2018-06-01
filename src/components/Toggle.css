@@ -1,28 +1,45 @@
 .toggleActive {
   color: #E62B4C !important;
-  font-size: 18px !important;
+  font-size: 22px !important;
+}
+
+.toggleActiveDetails {
+  color: #E62B4C !important;
+  font-size: 14px !important;
+}
+
+.toggleActiveDetailsHome {
+  color: #E62B4C !important;
+  font-size: 14px !important;
+  margin-top: 30px;
 }
 
 .languageQuestion {
   grid-column: 2 /span 8;
-  grid-row: 16;
+  grid-row: 15 /span 2;
   text-align: left;
   font-family: 'Roboto', sans-serif;
   color: #747574;
-  font-size: 14px;
+  font-size: 18px;
+  transform-origin: 0 0;
+  margin-top: 30px;
 }
 
 .fr {
-  grid-column: 6
+  grid-column: 6;
+  text-align: center;
 }
 
 .nl {
   grid-column: 9;
+  text-align: center;
 }
 
 .toggleLanguage {
-  grid-column: 7;
+  grid-column: 7 /span 2;
   grid-row: 16;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .toggle-1 {
@@ -47,40 +64,63 @@
 /*headers*/
 .optimizedCheck {
   grid-column: 1 /span 4;
-  grid-row: 8;
+  grid-row: 7;
   text-align: right;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .immediateCheck {
   grid-column: 7 /span 4;
-  grid-row: 8;
+  grid-row: 7;
   text-align: left;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .doctorsOffice {
   grid-column: 1 /span 4;
-  grid-row: 14;
+  grid-row: 13;
   text-align: right;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .atHome {
   grid-column: 7 /span 4;
-  grid-row: 14;
+  grid-row: 13;
   text-align: left;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+#optimizedDetails {
+  grid-column: 1 /span 4;
+  grid-row: 8 /span 2;
+}
+#doctorsOfficeDetails {
+  grid-column: 1 /span 4;
+  grid-row: 14 /span 2;
+}
+#immediateDetails {
+  grid-column: 7 /span 4;
+  grid-row: 8;
+}
+#atHomeDetails {
+  grid-column: 7 /span 4;
+  grid-row: 14;
 }
 
 .toggleDetailsText {
   font-family: 'Roboto', sans-serif;
   color: #747574;
   font-size: 12px;
+  
+  text-align: justify;
+}
+
+.left {
+  direction: rtl;  
 }
 
 /*description text*/
