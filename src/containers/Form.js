@@ -207,6 +207,8 @@ class Form extends React.Component {
       //handle error
       console.log(response);
     });
+
+    this.setState({currentStep: this.state.currentStep + 1});
   }
 
 
@@ -424,6 +426,17 @@ class Form extends React.Component {
                     </div>
                 </fieldset>
               }
+{/* SLIDE 6 */}
+                {currentStep === 6 &&
+                <fieldset className={this.state.animationSide}>
+                  <div className="grid-display">
+                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and scheduled </h2>
+                    <img alt="" className="vCheck" src={require('../images/Vcheck.png')} />
+                    <h3 className="confirmationText"> A confirmation mail has been sent to {this.state.contactEmail} </h3>
+                    
+                  </div>
+                </fieldset>
+              }
             </form>
 
 {/* BUTTONS */}
@@ -442,6 +455,11 @@ class Form extends React.Component {
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Previous </button>
                 <button className="submit action-button" onClick={this.submitStep}> Submit </button>
+              </div>
+            }
+            {currentStep === 6 &&
+              <div className="medicheckLink">
+                <a className="action-button link" href="https://www.medicheck.io/"> return to medicheck.io </a>
               </div>
             }
 
