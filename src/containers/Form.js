@@ -121,17 +121,23 @@ class Form extends React.Component {
     this.setState({'doctorImages': event.target.files})
     if (event.target.files && event.target.files[0]) {
       $("#doctorPreview").empty();
-      $(event.target.files).each(function () {
-        console.log(event.target.files[0].name)
-        $("#doctorPreview").append("<li><p> "+ event.target.files[0].name +"</p></li>");
-        }
-      );
+      let i
+      for (i = 0; i < event.target.files.length; i++) {
+        $("#doctorPreview").append("<li><p> "+ event.target.files[i].name +"</p></li>")  
+      }
     }
   }
 
   
   onMedicheckImageChange = event => {
     this.setState({'medicheckImages': event.target.files})
+    if (event.target.files && event.target.files[0]) {
+      $("#medicheckPreview").empty();
+      let i
+      for (i = 0; i < event.target.files.length; i++) {
+        $("#medicheckPreview").append("<li><p> "+ event.target.files[i].name +"</p></li>")  
+      }
+    }
   }
 
   // button handlers
@@ -201,6 +207,8 @@ class Form extends React.Component {
       //handle error
       console.log(response);
     });
+
+    this.setState({currentStep: this.state.currentStep + 1});
   }
 
 
@@ -397,11 +405,11 @@ class Form extends React.Component {
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
                       <label htmlFor="doctorImages" className="otherImageUpload" >Upload file(s)</label>
-                      <div className="doctorImagePreview">
-                        <ul id="doctorPreview" className="doctorPreview"></ul>
-                      </div>
                     </div>
-                   
+                    <div className="doctorImagePreview">
+                        <ul id="doctorPreview" className="doctorPreview"></ul>
+                    </div>
+
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
                       <textarea className="form-control" required name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
@@ -411,11 +419,22 @@ class Form extends React.Component {
                       <input type="file" onChange={this.onMedicheckImageChange.bind(this)} id="medicheckImages" multiple/>
                       <label htmlFor="medicheckImages" className="otherImageUpload">Upload file(s)</label> 
                     </div>
-                    {/* <div className="medicheckImagePreview">
-                      <img src={this.state.medicheckPreview} height="50" alt=""></img>
-                    </div> */}
+                    <div className="medicheckImagePreview">
+                        <ul id="medicheckPreview" className="doctorPreview"></ul>
+                    </div>
                     
                     </div>
+                </fieldset>
+              }
+{/* SLIDE 6 */}
+                {currentStep === 6 &&
+                <fieldset className={this.state.animationSide}>
+                  <div className="grid-display">
+                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and scheduled </h2>
+                    <img alt="" className="vCheck" src={require('../images/Vcheck.png')} />
+                    <h3 className="confirmationText"> A confirmation mail has been sent to {this.state.contactEmail} </h3>
+                    
+                  </div>
                 </fieldset>
               }
             </form>
@@ -436,6 +455,11 @@ class Form extends React.Component {
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Previous </button>
                 <button className="submit action-button" onClick={this.submitStep}> Submit </button>
+              </div>
+            }
+            {currentStep === 6 &&
+              <div className="medicheckLink">
+                <a className="action-button link" href="https://www.medicheck.io/"> return to medicheck.io </a>
               </div>
             }
 

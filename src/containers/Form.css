@@ -179,6 +179,31 @@ input[type="file"] + label:hover {
   background-color: #BF1C3B;
 }
 
+/* FILE NAME PREVIEW CSS */
+.doctorImagePreview {
+  grid-column: 3 /span 6;
+  grid-row: 9;
+  overflow: scroll;
+  height: 30px;
+  margin-top: 25px;
+}
+
+#doctorPreview, #medicheckPreview {
+  font-family: 'Roboto', sans-serif;
+  color: #737573;
+  font-size: 10px;
+  list-style: none;
+  line-height: 2px;
+}
+
+.medicheckImagePreview {
+  grid-column: 3 /span 6;
+  grid-row: 15;
+  overflow: scroll;
+  height: 30px;
+  margin-top: 25px;
+}
+
 /*BACKGROUND*/
 /*PAGE*/
 .container {
@@ -271,6 +296,25 @@ fieldset .fs-title {
   text-align: center;
   grid-column: 3 /span 6;
   grid-row: 1;
+}
+
+fieldset .completeFormTitle {
+  grid-row: 3;
+  text-transform: none;
+}
+
+.vCheck {
+  grid-column: 5 /span 6;
+  grid-row: 8;
+}
+
+.confirmationText{
+  grid-column: 3 /span 6;
+  grid-row: 14;
+  font-family: 'Roboto', sans-serif;
+  color: #7F807F;
+  font-size: 18px;
+  text-align: center;
 }
 
 /*INPUTS*/
@@ -379,6 +423,17 @@ fieldset .fs-title {
   position: absolute;
   left: 105px;
   font-size: 18px;
+}
+
+.medicheckLink {
+  grid-column: 8 / span 6;
+  grid-row: 17;
+  position: relative;
+}
+
+.medicheckLink .link {
+  position: absolute;
+  text-decoration: none;
 }
 
 .action-button:hover {
