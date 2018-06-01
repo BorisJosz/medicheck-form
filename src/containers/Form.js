@@ -31,6 +31,7 @@ class Form extends React.Component {
       employeeLastName: "",
       employeePhoneNumber: "",
       employeeAddress: "",
+      employeePosition: "",
       commentDoctor: "",
       commentMedicheck: "",
       startDate: undefined,
@@ -164,6 +165,7 @@ class Form extends React.Component {
       employeeLastName: this.state.employeeLastName,
       employeePhoneNumber: this.state.employeePhoneNumber,
       employeeAddress: this.state.employeeAddress,
+      employeePosition: this.state.employeePosition,
       employeeLanguage: spokenLanguage,
       optimizedCheck: optimizedCheckIf,
       atHome: checkLocation,
@@ -302,6 +304,11 @@ class Form extends React.Component {
                       <label className="form-control-placeholder" htmlFor="employeeAddress">Street Address</label>
                     </div>
                     
+                    {/* EMPLOYEE POSITION */}
+                    <div className="form-group" id="employeePosition">
+                      <input id="employeePosition" className="form-control" required name="employeePosition" type="text" value={this.state.employeePosition} onChange={this.handleInputChange} placeholder="" />
+                      <label className="form-control-placeholder" htmlFor="employeePosition">Employee Position</label>
+                    </div>
 
                     <div className="languageQuestion"> The employee speaks </div>
 
@@ -457,7 +464,7 @@ class Form extends React.Component {
                 {currentStep === 6 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and scheduled </h2>
+                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and sent to our team at Medicheck </h2>
                     <img alt="" className="vCheck" src={require('../images/Vcheck.png')} />
                     <h3 className="confirmationText"> A confirmation mail has been sent to {this.state.contactEmail} </h3>
                     

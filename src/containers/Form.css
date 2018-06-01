@@ -365,22 +365,27 @@ fieldset .completeFormTitle {
 
 #employeeFirstName {
   grid-column: 2 /span 3;
-  grid-row: 6;
+  grid-row: 5;
 }
 
 #employeeLastName {
   grid-column: 7 /span 3;
-  grid-row: 6;
+  grid-row: 5;
 }
 
 #employeeAddress {
   grid-column: 2 /span 8;
-  grid-row: 12;
+  grid-row: 11;
 }
 
 #employeePhoneNumber {
   grid-column: 2 /span 8;
-  grid-row: 9;
+  grid-row: 8;
+}
+
+#employeePosition {
+  grid-column: 2 /span 8;
+  grid-row: 14;
 }
 
 /*COMMENTS*/
