@@ -11,7 +11,7 @@ const Stepper = ({ currentStep, numberOfStep }) => {
       )
     }
   }
-
+  // this.setState({currentStep: this.state.currentStep - 1});
   return (
     <ul id="progressbar">
       {lines}
