@@ -27,6 +27,7 @@ class Form extends React.Component {
       contactPersonLastName: "",
       contactEmail: "",
       contactPhoneNumber: "",
+      companyName: "",
       employeeFirstName: "",
       employeeLastName: "",
       employeePhoneNumber: "",
@@ -42,7 +43,7 @@ class Form extends React.Component {
       medicalCertificate: [],
       doctorImages: [],
       medicheckImages: [],
-      previews: null,
+      imagePreviews: [],
     };
   }
   
@@ -101,23 +102,46 @@ class Form extends React.Component {
 
   // image handler
   onImageChange = event => {
-    this.setState({'medicalCertificate': event.target.files})
-    let Move = document.getElementById("certificateImageUploader")
-    Move.classList.add("moveUploader")
-    let Disable = document.getElementById("medicalCertificateTitle")
-    Disable.classList.add("disable")
+    this.setState({imagePreviews: []})
+    this.setState({medicalCertificate: event.target.files})
+    
+    // if (event.target.files && event.target.files[0]) {
+    //   $("#imagePreview").empty();
+    //   $(event.target.files).each(function () {
+    //       var reader = new FileReader();
+    //       reader.readAsDataURL(this);
+    //       reader.onload = function (e) {
+    //         $("#imagePreview").append("<li><img class='thumb' style='height:130px' src='" + e.target.result + "'></br></li>");
+    //       }
+    //   });
+    // }
+
+
+
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
-      $("#imagePreview").empty();
-      $(event.target.files).each(function () {
-          var reader = new FileReader();
-          reader.readAsDataURL(this);
-          reader.onload = function (e) {
-            $("#imagePreview").append("<li><img class='thumb' style='height:130px' src='" + e.target.result + "'></br></li>");
-          }
-      });
+      const images = this.state.imagePreviews
+    //   // console.log(event.target.files)
+      let myFiles = this.state.medicalCertificate
+      for (let file of event.target.files) {
+        myFiles.push(file)
+      }
+      myFiles.map(file => {
+        // console.log(myFiles.length)
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          images.push(reader.result)
+          // console.log('test actuel', images)
+          this.setState({imagePreviews: images})
+          this.setState({medicalCertificate: images}) 
+        }
+      })
     }
-   
+    // let Move = document.getElementById("certificateImageUploader")
+    // Move.classList.add("moveUploader")
+    // let Disable = document.getElementById("medicalCertificateTitle")
+    // Disable.classList.add("disable")
   }
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
@@ -161,6 +185,7 @@ class Form extends React.Component {
       contactPersonLastName: this.state.contactPersonLastName,
       contactEmail: this.state.contactEmail,
       contactPhoneNumber: this.state.contactPhoneNumber,
+      companyName: this.state.companyName,
       employeeFirstName: this.state.employeeFirstName,
       employeeLastName: this.state.employeeLastName,
       employeePhoneNumber: this.state.employeePhoneNumber,
@@ -262,12 +287,16 @@ class Form extends React.Component {
                       <label className="form-control-placeholder" htmlFor="contactPersonLastName">Last Name</label>
                     </div>
                     <div className="form-group" id="contactEmail">
-                      <input className="form-control" required name="contactEmail" type="text" value={this.state.contactEmail} onChange={this.handleInputChange} />
+                      <input className="form-control" required name="contactEmail" type="email" value={this.state.contactEmail} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="contactEmail">Email address</label>
                     </div>
                     <div className="form-group" id="contactPhoneNumber">
                       <input className="form-control" required name="contactPhoneNumber" type="text" value={this.state.contactPhoneNumber} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Phone Number</label>
+                    </div>
+                    <div className="form-group" id="companyName">
+                      <input className="form-control" required name="companyName" type="text" value={this.state.companyName} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="companyName">Company Name</label>
                     </div>
                   </div>
                 </fieldset>
@@ -293,7 +322,7 @@ class Form extends React.Component {
 
                     {/* PHONE NUMBER */}
                     <div className="form-group" id="employeePhoneNumber">
-                      <input className="form-control" required name="employeePhoneNumber" type="text" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} />
+                      <input className="form-control" required name="employeePhoneNumber" type="tel" pattern="^((02|\+32|0032)[1-9][0-9]{6})|((0|\+32|0032)[1-9][0-9]{8})$" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Phone Number</label>
                     </div>
 
@@ -417,11 +446,19 @@ class Form extends React.Component {
                     <div id="medicalCertificateTitle" >
                       <p> If available, upload a copy of the medical certificate here </p>
                     </div>
-                    <div id="certificateImageUploader" className="certificateImageUploader" >
+                    <div id="certificateImageUploader" className={"certificateImageUploader " + (this.state.imagePreviews === [] ? 'moveUploader' : '')} >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file(s)</label>
                     </div>
-                      <ul id="imagePreview" className="imagePreview"></ul>
+                      <ul id="imagePreview" className="imagePreview">
+                          { this.state.imagePreviews.map(image => {
+                            // console.log("test",image.length)
+                            return(<li>
+                                <img key={image.length} className='thumb' style={{height:'130px'}} src={image} alt=""/>
+                                <br/>
+                              </li>)
+                          })}
+                      </ul>
                   </div>
                 </fieldset>
               }
@@ -433,7 +470,7 @@ class Form extends React.Component {
 
                     {/* COMMENT FOR THE DOCTOR */}
                     <div className="form-group" id="commentDoctor">
-                      <textarea className="form-control" required name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
+                      <textarea className="form-control" name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentDoctor">Leave your comment for the doctor here..</label>
                     </div>
                     <div className="doctorImageUploader" >
@@ -446,7 +483,7 @@ class Form extends React.Component {
 
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
-                      <textarea className="form-control" required name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
+                      <textarea className="form-control" name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentMedicheck">Leave your comment for Medicheck here..</label>
                     </div>
                     <div className="medicheckImageUploader" >
