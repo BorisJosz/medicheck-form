@@ -27,6 +27,7 @@ class Form extends React.Component {
       contactPersonLastName: "",
       contactEmail: "",
       contactPhoneNumber: "",
+      companyName: "",
       employeeFirstName: "",
       employeeLastName: "",
       employeePhoneNumber: "",
@@ -103,32 +104,44 @@ class Form extends React.Component {
   onImageChange = event => {
     this.setState({imagePreviews: []})
     this.setState({medicalCertificate: event.target.files})
-    let Move = document.getElementById("certificateImageUploader")
-    Move.classList.add("moveUploader")
-    // let Disable = document.getElementById("medicalCertificateTitle")
-    // Disable.classList.add("disable")
+    
+    // if (event.target.files && event.target.files[0]) {
+    //   $("#imagePreview").empty();
+    //   $(event.target.files).each(function () {
+    //       var reader = new FileReader();
+    //       reader.readAsDataURL(this);
+    //       reader.onload = function (e) {
+    //         $("#imagePreview").append("<li><img class='thumb' style='height:130px' src='" + e.target.result + "'></br></li>");
+    //       }
+    //   });
+    // }
+
+
+
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
       const images = this.state.imagePreviews
-      // console.log(event.target.files)
+    //   // console.log(event.target.files)
       let myFiles = this.state.medicalCertificate
       for (let file of event.target.files) {
         myFiles.push(file)
       }
       myFiles.map(file => {
-        console.log(myFiles.length)
+        // console.log(myFiles.length)
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
           images.push(reader.result)
           // console.log('test actuel', images)
-          this.setState({imagePreviews: images}) 
+          this.setState({imagePreviews: images})
+          this.setState({medicalCertificate: images}) 
         }
       })
-      // this.setState({'imagePreviews': images})  
-      
     }
-   
+    // let Move = document.getElementById("certificateImageUploader")
+    // Move.classList.add("moveUploader")
+    // let Disable = document.getElementById("medicalCertificateTitle")
+    // Disable.classList.add("disable")
   }
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
@@ -172,6 +185,7 @@ class Form extends React.Component {
       contactPersonLastName: this.state.contactPersonLastName,
       contactEmail: this.state.contactEmail,
       contactPhoneNumber: this.state.contactPhoneNumber,
+      companyName: this.state.companyName,
       employeeFirstName: this.state.employeeFirstName,
       employeeLastName: this.state.employeeLastName,
       employeePhoneNumber: this.state.employeePhoneNumber,
@@ -279,6 +293,10 @@ class Form extends React.Component {
                     <div className="form-group" id="contactPhoneNumber">
                       <input className="form-control" required name="contactPhoneNumber" type="text" value={this.state.contactPhoneNumber} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Phone Number</label>
+                    </div>
+                    <div className="form-group" id="companyName">
+                      <input className="form-control" required name="companyName" type="text" value={this.state.companyName} onChange={this.handleInputChange} />
+                      <label className="form-control-placeholder" htmlFor="companyName">Company Name</label>
                     </div>
                   </div>
                 </fieldset>
@@ -428,7 +446,7 @@ class Form extends React.Component {
                     <div id="medicalCertificateTitle" >
                       <p> If available, upload a copy of the medical certificate here </p>
                     </div>
-                    <div id="certificateImageUploader" className={"certificateImageUploader " + (this.state.imagePreviews === null ? 'moveUploader' : '')} >
+                    <div id="certificateImageUploader" className={"certificateImageUploader " + (this.state.imagePreviews === [] ? 'moveUploader' : '')} >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file(s)</label>
                     </div>

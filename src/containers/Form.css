@@ -140,7 +140,7 @@ input:required:valid {
   margin-left: -10px;
 }
 .moveUploader {
-  grid-row: 11;
+  grid-row: 11 !important;
 }
 
 .doctorImageUploader {
@@ -362,22 +362,26 @@ fieldset .completeFormTitle {
 
 #contactPhoneNumber {
   grid-column: 2 /span 8;
-  grid-row: 15;
+  grid-row: 13;
 }
 
+#companyName {
+  grid-column: 2 /span 8;
+  grid-row: 17;
+}
 #contactPersonFirstName {
   grid-column: 2 /span 3;
-  grid-row: 7;
+  grid-row: 5;
 }
 
 #contactPersonLastName {
   grid-column: 7 /span 3;
-  grid-row: 7;
+  grid-row: 5;
 }
 
 #contactEmail {
   grid-column: 2 /span 8;
-  grid-row: 11;
+  grid-row: 9;
 }
 
 #employeeFirstName {
