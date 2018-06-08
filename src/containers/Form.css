@@ -83,6 +83,7 @@ input:required:valid {
 .DateInput_input {
   padding: 0px !important;
   padding-top: 20px !important;
+  font-size: 18px !important;
 }
 
 .DateRangePickerInput_arrow {
@@ -103,7 +104,7 @@ input:required:valid {
 }
 
 .calendarTitle {
-  grid-column: 2 /span 8;
+  grid-column: 1 /span 9;
   grid-row: 5;
 }
 
@@ -212,6 +213,7 @@ input[type="file"] + label:hover {
   font-size: 10px;
   list-style: none;
   line-height: 2px;
+  margin-left: 4px;
 }
 
 .medicheckImagePreview {

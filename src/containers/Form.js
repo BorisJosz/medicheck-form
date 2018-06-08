@@ -286,7 +286,7 @@ class Form extends React.Component {
               {currentStep === 2 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title"> INFORMATION EMPLOYE </h2>
+                    <h2 className="fs-title"> INFORMATION SALARIE </h2>
 
                     {/* FIRST NAME */}
                     <div className="form-group" id="employeeFirstName">
@@ -317,10 +317,10 @@ class Form extends React.Component {
                     {/* EMPLOYEE POSITION */}
                     <div className="form-group" id="employeePosition">
                       <input id="employeePosition" className="form-control" required name="employeePosition" type="text" value={this.state.employeePosition} onChange={this.handleInputChange} placeholder="" />
-                      <label className="form-control-placeholder" htmlFor="employeePosition">Tâche de l'employé au sein de l'entreprise</label>
+                      <label className="form-control-placeholder" htmlFor="employeePosition">Rôle du salarié</label>
                     </div>
 
-                    <div className="languageQuestion"> L'employé parle le </div>
+                    <div className="languageQuestion"> Le salarié parle le </div>
 
                     {/* Toggle options */}
                     <div id="fr" className={"languageQuestion fr " + (this.state.employeeLanguage ? '' : 'toggleActive')}> FR </div>
@@ -453,7 +453,7 @@ class Form extends React.Component {
 
                     {/* COMMENT FOR THE DOCTOR */}
                     <div className="form-group" id="commentDoctor">
-                      <textarea className="form-control" name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
+                      <textarea className="form-control" name="commentDoctor" required value={this.state.commentDoctor} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentDoctor">Votre commentaire pour le docteur...</label>
                     </div>
                     <div className="doctorImageUploader" >
@@ -466,7 +466,7 @@ class Form extends React.Component {
 
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
-                      <textarea className="form-control" name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
+                      <textarea className="form-control" name="commentMedicheck" required value={this.state.commentMedicheck} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentMedicheck">Votre commentaire pour Medicheck</label>
                     </div>
                     <div className="medicheckImageUploader" >
