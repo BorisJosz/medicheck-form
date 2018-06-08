@@ -354,7 +354,7 @@ class Form extends React.Component {
                         </div>
                       </div> */}
                     
-                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Onmiddelijke Check </div>
+                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Onmiddelijke </div>
                       <div id="immediateDetails" className={"toggleDetailsText " + (this.state.optimizedCheck ? 'toggleActiveDetails' : '')}> Laat de check plaatsvinden op het eerst mogelijke tijdstip</div>
                       {/* <div id="immediateDropdown">
                         <i id="immediateIcon" className={"fas fa-info " + (this.state.optimizedCheck ? 'toggleActive' : '')} onClick={this.toggleDropdownImmediate}></i>
