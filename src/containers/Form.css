@@ -103,7 +103,7 @@ input:required:valid {
 }
 
 .calendarTitle {
-  grid-column: 2 /span 8;
+  grid-column: 1 /span 9;
   grid-row: 5;
 }
 
@@ -425,6 +425,7 @@ fieldset .completeFormTitle {
   background-color: rgba(255,0,0,0);
   font-weight: bold;
   font-size: 18px;
+  padding: 0px;
   color: white;
   cursor: pointer;
   border: none;
@@ -464,7 +465,7 @@ fieldset .completeFormTitle {
 }
 
 .action-button:hover {
-  font-size: 22px;
+  font-size: 20px;
   border: none;
 }
 
