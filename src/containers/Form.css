@@ -311,7 +311,7 @@ fieldset .fs-title {
   text-transform: uppercase;
   color: #243365;
   text-align: center;
-  grid-column: 3 /span 6;
+  grid-column: 2 /span 8;
   grid-row: 1;
 }
 
