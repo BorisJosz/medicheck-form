@@ -451,7 +451,7 @@ class Form extends React.Component {
 
                     {/* COMMENT FOR THE DOCTOR */}
                     <div className="form-group" id="commentDoctor">
-                      <textarea className="form-control" name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
+                      <textarea className="form-control" name="commentDoctor" required value={this.state.commentDoctor} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentDoctor">Leave your comment for the doctor here..</label>
                     </div>
                     <div className="doctorImageUploader" >
@@ -464,7 +464,7 @@ class Form extends React.Component {
 
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
-                      <textarea className="form-control" name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
+                      <textarea className="form-control" name="commentMedicheck" required value={this.state.commentMedicheck} onChange={this.handleInputChange} />
                       <label className="form-control-placeholder" htmlFor="commentMedicheck">Leave your comment for Medicheck here..</label>
                     </div>
                     <div className="medicheckImageUploader" >
