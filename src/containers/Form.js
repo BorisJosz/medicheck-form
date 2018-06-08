@@ -249,35 +249,35 @@ class Form extends React.Component {
       <div className="container">
         <div className="formBody">
           <div className="form-background">
-            <div className="formText title"> Launch a Check </div>
+            <div className="formText title"> Lancer un Check </div>
 
             <form id="msform">
 {/* SLIDE 1 */}
               {currentStep === 1 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title"> Company Information </h2>
+                    <h2 className="fs-title"> INFORMATION ENTREPRISE </h2>
                     
                    
                     <div className="form-group" id="contactPersonFirstName">
                       <input className="form-control" required name="contactPersonFirstName" type="text" value={this.state.contactPersonFirstName} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactPersonFirstName">First Name</label>
+                      <label className="form-control-placeholder" htmlFor="contactPersonFirstName">Prénom</label>
                     </div>
                     <div className="form-group" id="contactPersonLastName">
                       <input className="form-control" required name="contactPersonLastName" type="text" value={this.state.contactPersonLastName} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactPersonLastName">Last Name</label>
+                      <label className="form-control-placeholder" htmlFor="contactPersonLastName">Nom</label>
                     </div>
                     <div className="form-group" id="contactEmail">
                       <input className="form-control" required name="contactEmail" type="email" value={this.state.contactEmail} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactEmail">Email address</label>
+                      <label className="form-control-placeholder" htmlFor="contactEmail">Adresse email</label>
                     </div>
                     <div className="form-group" id="contactPhoneNumber">
                       <input className="form-control" required name="contactPhoneNumber" type="text" value={this.state.contactPhoneNumber} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Phone Number</label>
+                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Numéro de téléphone</label>
                     </div>
                     <div className="form-group" id="companyName">
                       <input className="form-control" required name="companyName" type="text" value={this.state.companyName} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="companyName">Company Name</label>
+                      <label className="form-control-placeholder" htmlFor="companyName">Nom de l'entreprise</label>
                     </div>
                   </div>
                 </fieldset>
@@ -286,41 +286,41 @@ class Form extends React.Component {
               {currentStep === 2 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title"> Employee Information </h2>
+                    <h2 className="fs-title"> INFORMATION EMPLOYE </h2>
 
                     {/* FIRST NAME */}
                     <div className="form-group" id="employeeFirstName">
                       <input className="form-control" required name="employeeFirstName" type="text" value={this.state.employeeFirstName} onChange={this.handleInputChange}/>
-                      <label className="form-control-placeholder" htmlFor="employeeFirstName">First Name</label>
+                      <label className="form-control-placeholder" htmlFor="employeeFirstName">Prénom</label>
                     </div>
                     
                     {/* LAST NAME */}
                     <div className="form-group" id="employeeLastName">
                       <input className="form-control" required name="employeeLastName" type="text" value={this.state.employeeLastName} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="employeeLastName">Last Name</label>
+                      <label className="form-control-placeholder" htmlFor="employeeLastName">Nom</label>
                     </div>
                     
 
                     {/* PHONE NUMBER */}
                     <div className="form-group" id="employeePhoneNumber">
                       <input className="form-control" required name="employeePhoneNumber" type="tel" pattern="^((02|\+32|0032)[1-9][0-9]{6})|((0|\+32|0032)[1-9][0-9]{8})$" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Phone Number</label>
+                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Numéro de téléphone</label>
                     </div>
 
                     {/* EMPLOYEE ADDRESS */}
 
                     <div className="form-group" id="employeeAddress">
                       <input id="employeeAddress" className="form-control" required name="employeeAddress" type="text" value={this.state.employeeAddress} onChange={this.handleInputChange} placeholder="" />
-                      <label className="form-control-placeholder" htmlFor="employeeAddress">Street Address</label>
+                      <label className="form-control-placeholder" htmlFor="employeeAddress">Adresse postale</label>
                     </div>
                     
                     {/* EMPLOYEE POSITION */}
                     <div className="form-group" id="employeePosition">
                       <input id="employeePosition" className="form-control" required name="employeePosition" type="text" value={this.state.employeePosition} onChange={this.handleInputChange} placeholder="" />
-                      <label className="form-control-placeholder" htmlFor="employeePosition">Employee Position</label>
+                      <label className="form-control-placeholder" htmlFor="employeePosition">Tâche de l'employé au sein de l'entreprise</label>
                     </div>
 
-                    <div className="languageQuestion"> The employee speaks </div>
+                    <div className="languageQuestion"> L'employé parle le </div>
 
                     {/* Toggle options */}
                     <div id="fr" className={"languageQuestion fr " + (this.state.employeeLanguage ? '' : 'toggleActive')}> FR </div>
@@ -341,12 +341,12 @@ class Form extends React.Component {
               {currentStep === 3 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title"> Check Details </h2>
+                    <h2 className="fs-title"> DETAILS DU CHECK </h2>
 
                     {/* Toggle Options */}
 
-                      <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Optimized Check </div>
-                      <div id="optimizedDetails" className={"toggleDetailsText left " + (this.state.optimizedCheck ? '' : 'toggleActiveDetails')}> Allows for the check to take place at the most opportune time of the incapacity period to maximize the chances of an early return to work </div>
+                      <div id="optimized" className={"toggleTitles optimizedCheck " + (this.state.optimizedCheck ? '' : 'toggleActive')} > Check optimisé </div>
+                      <div id="optimizedDetails" className={"toggleDetailsText left " + (this.state.optimizedCheck ? '' : 'toggleActiveDetails')}> Permet d’effectuer le contrôle au moment le plus opportun de la période d’incapacité, maximisant le chances d’un retour anticipé </div>
                       {/* <div id="optimizedDropdown"> */}
                       {/* <i id="optimizedIcon" className={"fas fa-info " + (this.state.optimizedCheck ? '' : 'toggleActive')} onClick={this.toggleDropdownOptimized}></i>
                         <div id="optimizedDropdownContent" className="dropDownBackground leftNudge disable">
@@ -354,8 +354,8 @@ class Form extends React.Component {
                         </div>
                       </div> */}
                     
-                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Immediate Check </div>
-                      <div id="immediateDetails" className={"toggleDetailsText " + (this.state.optimizedCheck ? 'toggleActiveDetails' : '')}> Allows for the check to happen in the shortest delays possible</div>
+                      <div id="immediate" className={"toggleTitles immediateCheck " + (this.state.optimizedCheck ? 'toggleActive' : '')}> Check immédiat </div>
+                      <div id="immediateDetails" className={"toggleDetailsText " + (this.state.optimizedCheck ? 'toggleActiveDetails' : '')}> Permet d’effectuer le contrôle dans les plus brefs délais</div>
                       {/* <div id="immediateDropdown">
                         <i id="immediateIcon" className={"fas fa-info " + (this.state.optimizedCheck ? 'toggleActive' : '')} onClick={this.toggleDropdownImmediate}></i>
                         <div id="immediateDropdownContent" className="dropDownBackground rightNudge disable ">
@@ -370,8 +370,8 @@ class Form extends React.Component {
                       </label>
                     </div>
 
-                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')}> At the doctor's cabinet </div>
-                    <div id="doctorsOfficeDetails" className={"toggleDetailsText left " + (this.state.atHome ? '' : 'toggleActiveDetails')}> We recommend this choice as it is more respectful of the employee’s intimacy and is thus in accordance with the positive approach that your employer has chosen to partake in </div>
+                    <div id="doctorsOffice" className={"toggleTitles doctorsOffice " + (this.state.atHome ? '' : 'toggleActive')}> Au cabinet médical </div>
+                    <div id="doctorsOfficeDetails" className={"toggleDetailsText left " + (this.state.atHome ? '' : 'toggleActiveDetails')}> Nous encourageons cette démarche qui est plus respectueuse de l’intimité du salarié et qui est en ligne avec l’approche positive que votre employeur a décidé de promouvoir </div>
                     {/* <div id="doctorDropdown">
                       <i id="doctorIcon" className={"fas fa-info " + (this.state.atHome ? '' : 'toggleActive')} onClick={this.toggleDropdownDoctor}></i>
                         <div id="doctorDropdownContent" className="dropDownBackground leftNudge disable">
@@ -380,8 +380,8 @@ class Form extends React.Component {
                       </div> */}
                     
                     
-                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')}> At the employee's home </div>
-                    <div id="atHomeDetails" className={"toggleDetailsText " + (this.state.atHome ? 'toggleActiveDetailsHome' : '')}> Checks at home are recommended only in cases where the employee is required to stay home</div>
+                    <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')}> Au domicile de l'employé </div>
+                    <div id="atHomeDetails" className={"toggleDetailsText " + (this.state.atHome ? 'toggleActiveDetailsHome' : '')}> Les checks à domicile sont utiliser uniquement en cas de sortie non-autorisée du salarié</div>
                     {/* <div id="atHomeDropdown">
                         <i id="atHomeIcon" className={"fas fa-info " + (this.state.atHome ? 'toggleActive' : '')} onClick={this.toggleDropdownAtHome}></i>
                         <div id="atHomeDropdownContent" className="dropDownBackground rightNudge disable ">
@@ -404,9 +404,9 @@ class Form extends React.Component {
                 
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title"> Incapacity Period </h2>
+                    <h2 className="fs-title"> PERIODE D'INCAPACITE DE TRAVAIL </h2>
                     <div className="calendarTitle"> 
-                      <p> Insert the start and end date of the work incapacity </p>
+                      <p> Veuillez indiquer la date de début et/ou de fin de la période </p>
                     </div>
                     <div className="calendar">
                       <DateRangePicker 
@@ -425,11 +425,11 @@ class Form extends React.Component {
 
                     {/* IMAGE UPLOADER */}
                     <div id="medicalCertificateTitle" >
-                      <p> If available, upload a copy of the medical certificate here </p>
+                      <p> Si disponible, veuillez joindre une copie du certificat médical </p>
                     </div>
                     <div id="certificateImageUploader" className={"certificateImageUploader " + (this.state.imagePreviews ? '' : 'moveUploader')} >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
-                      <label htmlFor="medicalCertificate">Upload file(s)</label>
+                      <label htmlFor="medicalCertificate">Insérer fichier(s)</label>
                     </div>
                       <ul id="imagePreview" className="imagePreview">
                           { this.state.imagePreviews.map(image => {
@@ -447,16 +447,16 @@ class Form extends React.Component {
               {currentStep === 5 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title"> Comments </h2>
+                    <h2 className="fs-title"> COMMENTAIRES </h2>
 
                     {/* COMMENT FOR THE DOCTOR */}
                     <div className="form-group" id="commentDoctor">
                       <textarea className="form-control" name="commentDoctor" value={this.state.commentDoctor} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="commentDoctor">Leave your comment for the doctor here..</label>
+                      <label className="form-control-placeholder" htmlFor="commentDoctor">Votre commentaire pour le docteur...</label>
                     </div>
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
-                      <label htmlFor="doctorImages" className="otherImageUpload" >Upload file(s)</label>
+                      <label htmlFor="doctorImages" className="otherImageUpload" >Insérer fichier(s)</label>
                     </div>
                     <div className="doctorImagePreview">
                         <ul id="doctorPreview" className="doctorPreview"></ul>
@@ -465,11 +465,11 @@ class Form extends React.Component {
                     {/* COMMENT FOR MEDICHECK */}
                     <div className="form-group" id="commentMedicheck">
                       <textarea className="form-control" name="commentMedicheck" value={this.state.commentMedicheck} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="commentMedicheck">Leave your comment for Medicheck here..</label>
+                      <label className="form-control-placeholder" htmlFor="commentMedicheck">Votre commentaire pour Medicheck</label>
                     </div>
                     <div className="medicheckImageUploader" >
                       <input type="file" onChange={this.onMedicheckImageChange.bind(this)} id="medicheckImages" multiple/>
-                      <label htmlFor="medicheckImages" className="otherImageUpload">Upload file(s)</label> 
+                      <label htmlFor="medicheckImages" className="otherImageUpload">Insérer fichier(s)</label> 
                     </div>
                     <div className="medicheckImagePreview">
                         <ul id="medicheckPreview" className="doctorPreview"></ul>
@@ -482,9 +482,9 @@ class Form extends React.Component {
                 {currentStep === 6 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title completeFormTitle"> Your Check has been properly filled in and sent to our team at Medicheck </h2>
+                    <h2 className="fs-title completeFormTitle"> Le check a été correctement rempli et réceptionné par notre équipe a Medicheck </h2>
                     <img alt="" className="vCheck" src={require('../images/Vcheck.png')} />
-                    <h3 className="confirmationText"> A confirmation mail has been sent to {this.state.contactEmail} </h3>
+                    <h3 className="confirmationText"> Un mail de confirmation a été envoyé à {this.state.contactEmail} </h3>
                     
                   </div>
                 </fieldset>
@@ -494,24 +494,24 @@ class Form extends React.Component {
 {/* BUTTONS */}
             {currentStep === 1 &&
               <div className="button-placement">
-                <button className="next action-button" onClick={this.nextStep}> Next </button>
+                <button className="next action-button" onClick={this.nextStep}> Suivant </button>
               </div>
             }
             {currentStep >= 2 && currentStep <= 4 &&
               <div className="button-placement">
-                <button className="prev action-button" onClick={this.prevStep}> Previous </button>
-                <button className="next action-button" onClick={this.nextStep}> Next </button>
+                <button className="prev action-button" onClick={this.prevStep}> Précédent </button>
+                <button className="next action-button" onClick={this.nextStep}> Suivant </button>
               </div>
             }
             {currentStep === 5 &&
               <div className="button-placement">
-                <button className="prev action-button" onClick={this.prevStep}> Previous </button>
-                <button className="submit action-button" onClick={this.submitStep}> Submit </button>
+                <button className="prev action-button" onClick={this.prevStep}> Précédent </button>
+                <button className="submit action-button" onClick={this.submitStep}> Envoi </button>
               </div>
             }
             {currentStep === 6 &&
               <div className="medicheckLink">
-                <a className="action-button link" href="https://www.medicheck.io/"> return to medicheck.io </a>
+                <a className="action-button link" href="https://www.medicheck.io/"> retourner sur medicheck.io </a>
               </div>
             }
 
