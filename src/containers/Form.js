@@ -48,24 +48,6 @@ class Form extends React.Component {
   }
   
 
-  // DROPDOWN
-  // toggleDropdownOptimized = () => {
-  //   let optimizedDropdown = document.getElementById("optimizedDropdownContent");
-  //   optimizedDropdown.classList.toggle("disable")
-  // }
-  // toggleDropdownImmediate = () => {
-  //   let immediateDropdown = document.getElementById("immediateDropdownContent");
-  //   immediateDropdown.classList.toggle("disable")
-  // }
-  // toggleDropdownDoctor = () => {
-  //   let doctorDropdown = document.getElementById("doctorDropdownContent");
-  //   doctorDropdown.classList.toggle("disable")
-  // }
-  // toggleDropdownAtHome = () => {
-  //   let atHomeDropdown = document.getElementById("atHomeDropdownContent");
-  //   atHomeDropdown.classList.toggle("disable")
-  // }
-
   // TOGGLE CSS FUNCTIONS
   toggleCssLanguage = () => {
     let Fr = document.getElementById("fr");
@@ -102,9 +84,10 @@ class Form extends React.Component {
 
   // image handler
   onImageChange = event => {
-    this.setState({imagePreviews: []})
+    this.setState({imagePreviews: [event.target.files]})
     this.setState({medicalCertificate: event.target.files})
     
+    // Working preview based on state but DOESNT get saved after next (adds to DOM..)
     // if (event.target.files && event.target.files[0]) {
     //   $("#imagePreview").empty();
     //   $(event.target.files).each(function () {
@@ -116,12 +99,10 @@ class Form extends React.Component {
     //   });
     // }
 
-
-
     // Multiple Image Preview
     if (event.target.files && event.target.files[0]) {
       const images = this.state.imagePreviews
-    //   // console.log(event.target.files)
+      // console.log(event.target.files)
       let myFiles = this.state.medicalCertificate
       for (let file of event.target.files) {
         myFiles.push(file)
@@ -138,10 +119,10 @@ class Form extends React.Component {
         }
       })
     }
-    // let Move = document.getElementById("certificateImageUploader")
-    // Move.classList.add("moveUploader")
-    // let Disable = document.getElementById("medicalCertificateTitle")
-    // Disable.classList.add("disable")
+    let Move = document.getElementById("certificateImageUploader")
+    Move.classList.add("moveUploader")
+    let Disable = document.getElementById("medicalCertificateTitle")
+    Disable.classList.add("disable")
   }
   onDoctorImageChange = event => {
     this.setState({'doctorImages': event.target.files})
@@ -400,7 +381,7 @@ class Form extends React.Component {
                     
                     
                     <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')}> At the employee's home </div>
-                    <div id="atHomeDetails" className={"toggleDetailsText " + (this.state.atHome ? 'toggleActiveDetailsHome' : '')}> Allows for the check to happen in the shortest delays possible</div>
+                    <div id="atHomeDetails" className={"toggleDetailsText " + (this.state.atHome ? 'toggleActiveDetailsHome' : '')}> Checks at home are recommended only in cases where the employee is required to stay home</div>
                     {/* <div id="atHomeDropdown">
                         <i id="atHomeIcon" className={"fas fa-info " + (this.state.atHome ? 'toggleActive' : '')} onClick={this.toggleDropdownAtHome}></i>
                         <div id="atHomeDropdownContent" className="dropDownBackground rightNudge disable ">
@@ -446,7 +427,7 @@ class Form extends React.Component {
                     <div id="medicalCertificateTitle" >
                       <p> If available, upload a copy of the medical certificate here </p>
                     </div>
-                    <div id="certificateImageUploader" className={"certificateImageUploader " + (this.state.imagePreviews === [] ? 'moveUploader' : '')} >
+                    <div id="certificateImageUploader" className={"certificateImageUploader " + (this.state.imagePreviews ? '' : 'moveUploader')} >
                       <input type="file" name="medicalCertificate" onChange={this.onImageChange.bind(this)} id="medicalCertificate" multiple/>
                       <label htmlFor="medicalCertificate">Upload file(s)</label>
                     </div>
