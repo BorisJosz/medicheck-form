@@ -273,7 +273,7 @@ class Form extends React.Component {
                     </div>
                     <div className="form-group" id="contactPhoneNumber">
                       <input className="form-control" required name="contactPhoneNumber" type="text" value={this.state.contactPhoneNumber} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Numéro de téléphone</label>
+                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Numéro de GSM</label>
                     </div>
                     <div className="form-group" id="companyName">
                       <input className="form-control" required name="companyName" type="text" value={this.state.companyName} onChange={this.handleInputChange} />
