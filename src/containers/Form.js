@@ -513,7 +513,7 @@ class Form extends React.Component {
             }
             {currentStep === 6 &&
               <div className="medicheckLink">
-                <a className="action-button link" href="https://www.medicheck.io/"> retourner sur medicheck.io </a>
+                <a className="action-button link" href="https://www.medicheck.io/"> Terug naar medicheck.io </a>
               </div>
             }
 
