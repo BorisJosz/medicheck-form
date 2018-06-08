@@ -304,7 +304,7 @@ class Form extends React.Component {
                     {/* PHONE NUMBER */}
                     <div className="form-group" id="employeePhoneNumber">
                       <input className="form-control" required name="employeePhoneNumber" type="tel" pattern="^((02|\+32|0032)[1-9][0-9]{6})|((0|\+32|0032)[1-9][0-9]{8})$" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Numéro de téléphone</label>
+                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Numéro de GSM</label>
                     </div>
 
                     {/* EMPLOYEE ADDRESS */}
@@ -381,7 +381,7 @@ class Form extends React.Component {
                     
                     
                     <div id="atHome" className={"toggleTitles atHome " + (this.state.atHome ? 'toggleActive' : '')}> Au domicile de l'employé </div>
-                    <div id="atHomeDetails" className={"toggleDetailsText " + (this.state.atHome ? 'toggleActiveDetailsHome' : '')}> Les checks à domicile sont utiliser uniquement en cas de sortie non-autorisée du salarié</div>
+                    <div id="atHomeDetails" className={"toggleDetailsText " + (this.state.atHome ? 'toggleActiveDetailsHome' : '')}> Les Checks à domicile sont utiliser uniquement en cas de sortie non-autorisée du salarié</div>
                     {/* <div id="atHomeDropdown">
                         <i id="atHomeIcon" className={"fas fa-info " + (this.state.atHome ? 'toggleActive' : '')} onClick={this.toggleDropdownAtHome}></i>
                         <div id="atHomeDropdownContent" className="dropDownBackground rightNudge disable ">
@@ -484,7 +484,7 @@ class Form extends React.Component {
                 {currentStep === 6 &&
                 <fieldset className={this.state.animationSide}>
                   <div className="grid-display">
-                    <h2 className="fs-title completeFormTitle"> Le check a été correctement rempli et réceptionné par notre équipe a Medicheck </h2>
+                    <h2 className="fs-title completeFormTitle"> Le Check a été correctement rempli et réceptionné par notre équipe </h2>
                     <img alt="" className="vCheck" src={require('../images/Vcheck.png')} />
                     <h3 className="confirmationText"> Un mail de confirmation a été envoyé à {this.state.contactEmail} </h3>
                     
@@ -508,12 +508,12 @@ class Form extends React.Component {
             {currentStep === 5 &&
               <div className="button-placement">
                 <button className="prev action-button" onClick={this.prevStep}> Précédent </button>
-                <button className="submit action-button" onClick={this.submitStep}> Envoi </button>
+                <button className="submit action-button" onClick={this.submitStep}> Envoyer </button>
               </div>
             }
             {currentStep === 6 &&
               <div className="medicheckLink">
-                <a className="action-button link" href="https://www.medicheck.io/"> retourner sur medicheck.io </a>
+                <a className="action-button link return" href="https://www.medicheck.io/"> Retourner sur medicheck.io </a>
               </div>
             }
 

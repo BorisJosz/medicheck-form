@@ -2,6 +2,10 @@ p {
   font-family: 'Roboto', sans-serif;
 }
 
+.return {
+  left: -24px;
+}
+
 
 /* FORM VALIDATION */
 input:required:invalid, input:focus:invalid {
@@ -104,7 +108,7 @@ input:required:valid {
 }
 
 .calendarTitle {
-  grid-column: 1 /span 9;
+  grid-column: 1 /span 10;
   grid-row: 5;
 }
 
