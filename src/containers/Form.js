@@ -273,7 +273,7 @@ class Form extends React.Component {
                     </div>
                     <div className="form-group" id="contactPhoneNumber">
                       <input className="form-control" required name="contactPhoneNumber" type="text" value={this.state.contactPhoneNumber} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">Telefoonnummer</label>
+                      <label className="form-control-placeholder" htmlFor="contactPhoneNumber">GSM nummer</label>
                     </div>
                     <div className="form-group" id="companyName">
                       <input className="form-control" required name="companyName" type="text" value={this.state.companyName} onChange={this.handleInputChange} />
@@ -304,7 +304,7 @@ class Form extends React.Component {
                     {/* PHONE NUMBER */}
                     <div className="form-group" id="employeePhoneNumber">
                       <input className="form-control" required name="employeePhoneNumber" type="tel" pattern="^((02|\+32|0032)[1-9][0-9]{6})|((0|\+32|0032)[1-9][0-9]{8})$" value={this.state.employeePhoneNumber} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">Telefoonnummer</label>
+                      <label className="form-control-placeholder" htmlFor="employeePhoneNumber">GSM nummer</label>
                     </div>
 
                     {/* EMPLOYEE ADDRESS */}
