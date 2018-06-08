@@ -213,6 +213,7 @@ input[type="file"] + label:hover {
   font-size: 10px;
   list-style: none;
   line-height: 2px;
+  margin-left: 24px;
 }
 
 .medicheckImagePreview {
