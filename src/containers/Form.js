@@ -411,7 +411,9 @@ class Form extends React.Component {
                     <div className="calendar">
                       <DateRangePicker 
                         startDateId="startDate"
+                        startDatePlaceholderText="Début"
                         endDateId="endDate"
+                        endDatePlaceholderText="Fin"
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
                         onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate })}}
