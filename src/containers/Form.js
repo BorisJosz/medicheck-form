@@ -454,7 +454,7 @@ class Form extends React.Component {
                     {/* COMMENT FOR THE DOCTOR */}
                     <div className="form-group" id="commentDoctor">
                       <textarea className="form-control" name="commentDoctor" required value={this.state.commentDoctor} onChange={this.handleInputChange} />
-                      <label className="form-control-placeholder" htmlFor="commentDoctor">Votre commentaire pour le docteur...</label>
+                      <label className="form-control-placeholder" htmlFor="commentDoctor">Votre commentaire pour le docteur</label>
                     </div>
                     <div className="doctorImageUploader" >
                       <input type="file" onChange={this.onDoctorImageChange.bind(this)} id="doctorImages" multiple/>
