@@ -83,6 +83,7 @@ input:required:valid {
 .DateInput_input {
   padding: 0px !important;
   padding-top: 20px !important;
+  font-size: 18px !important;
 }
 
 .DateRangePickerInput_arrow {
